@@ -32,6 +32,27 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="bubble">
+        <property name="text">
+         <string>Make a Bubble</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="homeBtn">
         <property name="text">
          <string>Return Home</string>
