@@ -20,14 +20,21 @@
       <item>
        <widget class="QPushButton" name="assignment1Btn">
         <property name="text">
-         <string>Assignment 1</string>
+         <string>Bubble</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="assignment2Btn">
         <property name="text">
-         <string>Assignment 2</string>
+         <string>Bubbles</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="gundamBtn">
+        <property name="text">
+         <string>Gundam</string>
         </property>
        </widget>
       </item>

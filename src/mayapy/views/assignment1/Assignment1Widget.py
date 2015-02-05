@@ -29,7 +29,7 @@ class Assignment1Widget(PyGlassWidget):
         This callback creates a polygonal cylinder in the Maya scene.
 
         """
-        r = 50
+        r = 5
         a = 2.0*r
         y = (0, 1, 0)
         c = cmds.polyCylinder(

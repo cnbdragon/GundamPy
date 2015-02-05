@@ -9,6 +9,7 @@ from pyglass.windows.PyGlassWindow import PyGlassWindow
 from mayapy.views.home.MayaPyHomeWidget import MayaPyHomeWidget
 from mayapy.views.assignment1.Assignment1Widget import Assignment1Widget
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget
+from mayapy.views.gundam.GundamWidget import GundamWidget
 
 #___________________________________________________________________________________________________ MayaPyMainWindow
 class MayaPyMainWindow(PyGlassWindow):
@@ -24,8 +25,9 @@ class MayaPyMainWindow(PyGlassWindow):
             widgets={
                 'home':MayaPyHomeWidget,
                 'assignment1':Assignment1Widget,
-                'assignment2':Assignment2Widget },
-            title='MayaPy',
+                'assignment2':Assignment2Widget,
+                'gundam':GundamWidget},
+            title='GundamPy',
             **kwargs )
 
         self.setMinimumSize(1024,480)

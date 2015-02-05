@@ -24,6 +24,7 @@ class MayaPyHomeWidget(PyGlassWidget):
 
         self.assignment1Btn.clicked.connect(self._handleAssignment1)
         self.assignment2Btn.clicked.connect(self._handleAssignment2)
+        self.gundamBtn.clicked.connect(self._handleGundam)
 
         self._statusBox, statusLayout = self._createElementWidget(self, QtGui.QVBoxLayout, True)
         statusLayout.addStretch()
@@ -51,3 +52,7 @@ class MayaPyHomeWidget(PyGlassWidget):
 #___________________________________________________________________________________________________ _handleAssignment2
     def _handleAssignment2(self):
         self.mainWindow.setActiveWidget('assignment2')
+
+#___________________________________________________________________________________________________ _handleGundam
+    def _handleGundam(self):
+        self.mainWindow.setActiveWidget('gundam')
