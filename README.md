@@ -1,8 +1,8 @@
 GundamPy
 =========================
-Animplimintation of the MayaPy framwork,
+An implimintation of the MayaPy framwork,
 for animating and modeled giant robots
-by John Wulf And Kirten Dawes
+by John Wulf And Kirsten Dawes
 
 
 MayaPy
