@@ -25,6 +25,7 @@ class Assignment1Widget(PyGlassWidget):
         self.bubbleBtn.clicked.connect(self._handleBubbleButton)
         self.bubblesBtn.clicked.connect(self._handleBubblesButton)
         self.bubbleBtn_2.clicked.connect(self._handleBubble2Button)
+        self.bubblesBtn_2.clicked.connect(self._handleBubbles2Button)
         self.homeBtn.clicked.connect(self._handleReturnHome)
 
 #===================================================================================================
@@ -288,8 +289,16 @@ class Assignment1Widget(PyGlassWidget):
         ####
         #blend shape setup
         ####
-        bubbleBlend = cmd.blendShape(sphereXPlus, sphereXMinus, sphereZPlus, sphereZMinus, sphereXPlusZPlus, sphereXPlusZMinus,
-                       sphereXMinusZPlus, sphereXMinusZMinus, sphereDefault, n='bubbleBlend' )
+        bubbleBlend = cmd.blendShape(sphereXPlus,
+                                     sphereXMinus,
+                                     sphereZPlus,
+                                     sphereZMinus,
+                                     sphereXPlusZPlus,
+                                     sphereXPlusZMinus,
+                                     sphereXMinusZPlus,
+                                     sphereXMinusZMinus,
+                                     sphereDefault,
+                                     n='bubbleBlend' )
 
         #cmd.blendShape(bubbleBlend, edit=True, w=[(0,1),(1,.3)])
 
@@ -316,7 +325,7 @@ class Assignment1Widget(PyGlassWidget):
 
 
 #___________________________________________________________________________________________________ _handleBubble
-    def _handleBubble2Button(self):
+    def _handleBubbles2Button(self):
         """
         This callback creates a polygonal sphere in the Maya scene.
         it then translates it.
@@ -462,26 +471,41 @@ class Assignment1Widget(PyGlassWidget):
 
         #cmd.blendShape(bubbleBlend, edit=True, w=[(0,1),(1,.3)])
 
-        for i in range(1,300,5):
-            x = rand.choice(decRange)
-            y = 5*rand.choice(decRange2)
-            z = rand.choice(decRange)
-            cmd.currentTime(i)
-            cmd.select(sphereDefault)
-            cmd.move(x,y,z,r=True)
+        for i in range(0,100,1):
+            randX = rand.choice(range(-50,50,1))
+            randZ = rand.choice(range(-50,50,1))
+
+            sphereDefault = cmd.polySphere(n='sphereDefault')[0]
+            bubbleBlend = cmd.blendShape(sphereXPlus, sphereXMinus, sphereZPlus, sphereZMinus, sphereXPlusZPlus, sphereXPlusZMinus,
+                            sphereXMinusZPlus, sphereXMinusZMinus, sphereDefault, n='bubbleBlend' )
+            cmds.select(sphereDefault)
+
+
+
+            startTime = rand.choice(range(1, 600, 1))
+            cmd.currentTime(1)
+            cmd.move(randX, 0, randZ, a=True)
             cmd.setKeyframe()
-            cmd.blendShape(bubbleBlend, edit=True,
-                           w=[(0,rand.choice(decRange)),
-                              (1,rand.choice(decRange)),
-                              (2,rand.choice(decRange)),
-                              (3,rand.choice(decRange)),
-                              (4,rand.choice(decRange)),
-                              (5,rand.choice(decRange)),
-                              (6,rand.choice(decRange)),
-                              (7,rand.choice(decRange))])
-            cmd.setKeyframeBlendshapeTargetWts()
-        response = nimble.createRemoteResponse(globals())
-        #response.put('name', c)
+            for j in range(startTime, 600, 2):
+                x = rand.choice(decRange)
+                y = 5*rand.choice(decRange2)
+                z = rand.choice(decRange)
+                cmd.currentTime(i)
+                cmd.select(sphereDefault)
+                cmd.move(x,y,z,r=True)
+                cmd.setKeyframe()
+                cmd.blendShape(bubbleBlend, edit=True,
+                                   w=[(0,rand.choice(decRange)),
+                                      (1,rand.choice(decRange)),
+                                      (2,rand.choice(decRange)),
+                                      (3,rand.choice(decRange)),
+                                      (4,rand.choice(decRange)),
+                                      (5,rand.choice(decRange)),
+                                      (6,rand.choice(decRange)),
+                                      (7,rand.choice(decRange))])
+                cmd.setKeyframeBlendshapeTargetWts()
+            response = nimble.createRemoteResponse(globals())
+            #response.put('name', c)
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleReturnHome(self):
