@@ -20,7 +20,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Assignment 1</string>
+         <string>Bubble</string>
         </property>
        </widget>
       </item>
@@ -32,23 +32,37 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="bubble">
+       <widget class="QPushButton" name="sphereBtn">
         <property name="text">
-         <string>Make a Bubble</string>
+         <string>Make a Sphere</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="bubbleBtn">
         <property name="text">
-         <string>PushButton</string>
+         <string>Make a Bubble V1</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="bubblesBtn">
         <property name="text">
-         <string>PushButton</string>
+         <string>Make Bubbles v1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bubbleBtn_2">
+        <property name="text">
+         <string>Make a Bubble v2</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bubblesBtn_2">
+        <property name="text">
+         <string>Make Bubbles v2</string>
         </property>
        </widget>
       </item>
