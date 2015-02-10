@@ -23,12 +23,12 @@ class MayaPyApplication(PyGlassApplication):
 #___________________________________________________________________________________________________ GS: appID
     @property
     def appID(self):
-        return 'GundamPy'
+        return 'MayaPy'
 
 #___________________________________________________________________________________________________ GS: appGroupID
     @property
     def appGroupID(self):
-        return 'GundamPy'
+        return 'MayaPy'
 
 #___________________________________________________________________________________________________ GS: mainWindowClass
     @property
@@ -39,15 +39,5 @@ class MayaPyApplication(PyGlassApplication):
 ####################################################################################################
 ####################################################################################################
 
-# set app icon
-'''
-app_icon = QtGui.QIcon()
-app_icon.addFile('graphics/Gny-0042-874-head_16x16.png', QtCore.QSize(16,16))
-app_icon.addFile('graphics/Gny-0042-874-head_24x24.png', QtCore.QSize(24,24))
-app_icon.addFile('graphics/Gny-0042-874-head_32x32.png', QtCore.QSize(32,32))
-app_icon.addFile('graphics/Gny-0042-874-head_48x48.png', QtCore.QSize(48,48))
-app_icon.addFile('graphics/Gny-0042-874-head_256x256.png', QtCore.QSize(256,256))
-app.setWindowIcon(app_icon)
-'''
 if __name__ == '__main__':
     MayaPyApplication().run()
