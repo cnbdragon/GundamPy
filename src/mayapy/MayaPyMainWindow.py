@@ -2,6 +2,7 @@
 # (C)2013
 # Scott Ernst
 
+from PySide import QtCore
 from PySide import QtGui
 
 from pyglass.windows.PyGlassWindow import PyGlassWindow
@@ -40,3 +41,11 @@ class MayaPyMainWindow(PyGlassWindow):
         widget.setLayout(layout)
 
         self.setActiveWidget('home')
+
+        app_icon = QtGui.QIcon()
+        app_icon.addFile('../graphics/Gny-0042-874-head_16x16.png', QtCore.QSize(16,16))
+        app_icon.addFile('../graphics/Gny-0042-874-head_24x24.png', QtCore.QSize(24,24))
+        app_icon.addFile('../graphics/Gny-0042-874-head_32x32.png', QtCore.QSize(32,32))
+        app_icon.addFile('../graphics/Gny-0042-874-head_48x48.png', QtCore.QSize(48,48))
+        app_icon.addFile('../graphics/Gny-0042-874-head_256x256.png', QtCore.QSize(256,256))
+        self.setWindowIcon(app_icon)

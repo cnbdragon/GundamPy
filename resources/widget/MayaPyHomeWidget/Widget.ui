@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../graphics/Gny-0042-874-head_256x256.png</normaloff>../../../graphics/Gny-0042-874-head_256x256.png</iconset>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QWidget" name="widget_2" native="true">
@@ -27,7 +31,7 @@
       <item>
        <widget class="QPushButton" name="assignment2Btn">
         <property name="text">
-         <string>Bubbles</string>
+         <string>Not Used</string>
         </property>
        </widget>
       </item>

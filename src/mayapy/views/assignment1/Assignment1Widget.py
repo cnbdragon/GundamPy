@@ -8,6 +8,7 @@ import numpy as np
 from nimble import cmds
 from nimble import cmds as cmd
 from pyglass.widgets.PyGlassWidget import PyGlassWidget
+import BlendShapeTargetsKeyAll as bstka
 
 #___________________________________________________________________________________________________ Assignment1Widget
 class Assignment1Widget(PyGlassWidget):
@@ -189,7 +190,7 @@ class Assignment1Widget(PyGlassWidget):
         cmd.move(3, 0, 0, r=True)
         cmd.hide()
         cmd.select(sphereXPlus)
-        cmd.hide()
+        #cmd.hide()
 
         sphereXMinus = cmd.polySphere(n='sphereXMinus')[0]
         cmd.move(0, 0, 10, r=True)
@@ -202,7 +203,7 @@ class Assignment1Widget(PyGlassWidget):
         cmd.move(-3, 0, 0, r=True)
         cmd.hide()
         cmd.select(sphereXMinus)
-        cmd.hide()
+       #cmd.hide()
 
         sphereZPlus = cmd.polySphere(n='sphereZPlus')[0]
         cmd.move(0,0,15,r=True)
@@ -215,7 +216,7 @@ class Assignment1Widget(PyGlassWidget):
         cmd.move(0, 0, 3, r=True)
         cmd.hide()
         cmd.select(sphereZPlus)
-        cmd.hide()
+        #cmd.hide()
 
         sphereZMinus = cmd.polySphere(n='sphereZMinus')[0]
         cmd.move(0,0,20,r=True)
@@ -228,7 +229,7 @@ class Assignment1Widget(PyGlassWidget):
         cmd.move(0, 0, -3, r=True)
         cmd.hide()
         cmd.select(sphereZMinus)
-        cmd.hide()
+        #cmd.hide()
 
         sphereXPlusZPlus = cmd.polySphere(n='sphereXPlusZPlus')[0]
         cmd.move(0,0,25,r=True)
@@ -319,7 +320,8 @@ class Assignment1Widget(PyGlassWidget):
                               (5,rand.choice(decRange)),
                               (6,rand.choice(decRange)),
                               (7,rand.choice(decRange))])
-            cmd.setKeyframeBlendshapeTargetWts()
+            #cmd.setKeyframeBlendshapeTargetWts()
+            #bstka.BlendShapeTargetsKeyAll()
         response = nimble.createRemoteResponse(globals())
         #response.put('name', c)
 
@@ -503,7 +505,9 @@ class Assignment1Widget(PyGlassWidget):
                                       (5,rand.choice(decRange)),
                                       (6,rand.choice(decRange)),
                                       (7,rand.choice(decRange))])
-                cmd.setKeyframeBlendshapeTargetWts()
+                #cmd.setKeyframeBlendshapeTargetWts()
+                cmd.setKeyframe()
+                #bstka.BlendShapeTargetsKeyAll()
             response = nimble.createRemoteResponse(globals())
             #response.put('name', c)
 
