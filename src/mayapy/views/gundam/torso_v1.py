@@ -55,7 +55,7 @@ class Torso():
 
         #self.hip = mc.polySphere(r=5,n=name+'_hip')
 
-        self.torso = mc.polyUnite(self.spine,self.pelvic,self.clavical,n=name)[0]
+        self.torso = mc.polyUnite(self.spine,self.pelvic,n=name)[0]
 
 
     def _createJoints(self, name):
@@ -68,6 +68,7 @@ class Torso():
 
 
         mc.parent(self.torso,self.j_root)
+        mc.parent(self.clavical,self.j_neck)
 
         pass
 
