@@ -50,23 +50,30 @@ class Hand():
 
         self.r_hand = mc.polyUnite(self.r_hand_heal, self.r_hand_palm, n='r_hand')[0]
 
-        self.r_hand_n_1 = mc.polySphere(r=.6,n="r_hand_n_1")
+        self.r_hand_n_1 = mc.polySphere(r=.6,n="r_hand_n_1")[0]
         mc.move(-1.875,2,.25)
-        self.r_hand_n_2 = mc.polySphere(r=.6,n="r_hand_n_2")
+        self.r_hand_n_2 = mc.polySphere(r=.6,n="r_hand_n_2")[0]
         mc.move(-.625,2,.25)
-        self.r_hand_n_3 = mc.polySphere(r=.6,n="r_hand_n_3")
+        self.r_hand_n_3 = mc.polySphere(r=.6,n="r_hand_n_3")[0]
         mc.move(.625,2,.25)
-        self.r_hand_n_4 = mc.polySphere(r=.6,n="r_hand_n_4")
+        self.r_hand_n_4 = mc.polySphere(r=.6,n="r_hand_n_4")[0]
         mc.move(1.875,2,.25)
-        self.r_hand_n_t = mc.polySphere(r=.6,n="r_hand_n_t")
+        self.r_hand_n_t = mc.polySphere(r=.6,n="r_hand_n_t")[0]
 
         if side == Side.right:
             mc.move(2.25,-1.5,1.25)
         elif side == Side.left:
             mc.move(-2.25,-1.5,1.25)
 
-        self.hand = mc.polyCBoolOp(self.r_hand, self.r_hand_n_1, self.r_hand_n_2, self.r_hand_n_3, self.r_hand_n_4, self.r_hand_n_t,
-                                op=2, n='r_hand')
+        #self.hand = mc.polyCBoolOp(self.r_hand, self.r_hand_n_1, self.r_hand_n_2, self.r_hand_n_3, self.r_hand_n_4, self.r_hand_n_t,
+        #                       op=2, n='r_hand')
+
+        ### we did this becuase maya is stupid, and 2014 does not have polyCBoolOp()
+        self.hand = mc.polyBoolOp(self.r_hand, self.r_hand_n_1, op=2, n='r_hand')[0]
+        self.hand = mc.polyBoolOp(self.hand, self.r_hand_n_2, op=2, n='r_hand')[0]
+        self.hand = mc.polyBoolOp(self.hand, self.r_hand_n_3, op=2, n='r_hand')[0]
+        self.hand = mc.polyBoolOp(self.hand, self.r_hand_n_4, op=2, n='r_hand')[0]
+        self.hand = mc.polyBoolOp(self.hand, self.r_hand_n_t, op=2, n='r_hand')[0]
 
     def _createJoints(self, side):
          #bone
@@ -228,5 +235,5 @@ class Thumb():
 def main():
     Hand("right", Side.right)
 
-#main()
+main()
 mc.select(cl=True)
