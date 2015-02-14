@@ -48,6 +48,6 @@ class Plie():
         kneeJoints.move(self.toejointonleftfootx,self.tojointonleftfooty*self.depth, self.toejointonleftfootz)
         kneeJoints.move(self.toejointonrightfootx,self.tojointonrightfooty*self.depth, self.toejointonrightfootz)
         d = cmds.select("center of gravity")
-        "center of gravity".move(self.centerOfMassCurrent[0],self.centerOfMassCurrent[1]*self.depth,self.centerOfMassCurrent)
+        "center of gravity".move(self.centerOfMassCurrent[0],self.centerOfMassCurrent[1]*self.depth,self.centerOfMassCurrent[2])
         self.getImpulse()
 
