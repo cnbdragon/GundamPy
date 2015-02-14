@@ -7,6 +7,8 @@
 
 import nimble
 from nimble import cmds as mc
+
+
 from gundam_enums import Side
 
 class Hand():
@@ -32,6 +34,7 @@ class Hand():
 
         self._deleteHistory()
 
+        mc.select(self.j_wrist)
 
 
 
@@ -235,5 +238,5 @@ class Thumb():
 def main():
     Hand("right", Side.right)
 
-main()
+#main()
 mc.select(cl=True)
