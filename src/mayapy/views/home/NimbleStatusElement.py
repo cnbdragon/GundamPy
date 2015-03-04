@@ -12,7 +12,7 @@ from pyglass.elements.PyGlassElement import PyGlassElement
 from pyglass.themes.ColorSchemes import ColorSchemes
 from pyglass.themes.ThemeColorBundle import ThemeColorBundle
 
-from mayapy.enum.UserConfigEnum import UserConfigEnum
+from mayapy.mayapy_enum.UserConfigEnum import UserConfigEnum
 
 #___________________________________________________________________________________________________ NimbleStatusElement
 class NimbleStatusElement(PyGlassElement):

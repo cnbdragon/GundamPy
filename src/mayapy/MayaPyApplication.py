@@ -4,6 +4,7 @@
 
 from pyglass.app.PyGlassApplication import PyGlassApplication
 
+
 #___________________________________________________________________________________________________ MayaPyApplication
 class MayaPyApplication(PyGlassApplication):
 

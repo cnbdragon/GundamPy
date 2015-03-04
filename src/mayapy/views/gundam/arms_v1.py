@@ -38,9 +38,9 @@ class Arm():
         #create humerus
         self.humerus = mc.polyCube(sx=1, sy=1, sz=1, w=3,h=40, d=3, n=name+'_humerus')[0]
         mc.move(0,62,0)
-        self.sholder = mc.polySphere(r=5,n=name+'_shoulder')
+        self.shoulder = mc.polySphere(r=5,n=name+'_shoulder')
         mc.move(0,84,0)
-        self.humerus = mc.polyUnite(self.humerus,self.sholder, n=name+'_humerus')[0]
+        self.humerus = mc.polyUnite(self.humerus,self.shoulder, n=name+'_humerus')[0]
         mc.move(0,84,0, self.humerus+".scalePivot", self.humerus+".rotatePivot")
         pass
 
@@ -49,17 +49,17 @@ class Arm():
         mc.select(cl=True)
 
 
-        self.j_sholder = mc.joint(p=(0,84,0), n=name+'_sholder')
+        self.j_shoulder = mc.joint(p=(0,84,0), n=name+'_shoulder')
         self.j_elbow = mc.joint(p=(0,41,0), n=name+'_elbow')
         #self.j_toe = mc.joint(p=(0,0,2), n=name+'_toe')
 
-        mc.parent(self.humerus,self.j_sholder)
+        mc.parent(self.humerus,self.j_shoulder)
         mc.parent(self.radius,self.j_elbow)
 
         pass
 
     def _deleteHistory(self):
-        mc.select(self.j_sholder)
+        mc.select(self.j_shoulder)
         mc.delete(ch=True)
 
 #Arm('right', Side.right)
