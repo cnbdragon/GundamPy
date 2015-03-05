@@ -4,6 +4,7 @@
 
 from pyglass.widgets.PyGlassWidget import PyGlassWidget
 from gundam_skeleton_v1 import Skeleton
+from mayapy.views.physics.physicPlie2 import Plies
 from enum import Enum
 
 #___________________________________________________________________________________________________ Assignment2Widget
@@ -20,6 +21,14 @@ class GundamWidget(PyGlassWidget):
 
         self.leftFootBtn.clicked.connect(self._handleLeftFootButton)
         self.homeBtn.clicked.connect(self._handleReturnHome)
+        self.plieBtn.clicked.connect(self._handlePlie)
+        self.time1 = self.timeBox.value()
+
+#===================================================================================================
+#                                                                                 H A N D L E R S
+    def _handlePlie(self):
+        plie = Plies()
+        plie.moveHip()
 
 #===================================================================================================
 #                                                                                 H A N D L E R S
