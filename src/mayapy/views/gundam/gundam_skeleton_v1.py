@@ -45,10 +45,10 @@ class Skeleton:
         mc.select(self.leftLeg.j_hip)
         mc.move(20,0,12, r=True)
 
-        mc.select(self.rightArm.j_sholder)
+        mc.select(self.rightArm.j_shoulder)
         mc.move(-28,90,0, r=True)
         mc.rotate(0,0,-90)
-        mc.select(self.leftArm.j_sholder)
+        mc.select(self.leftArm.j_shoulder)
         mc.move(28,90,0, r=True)
         mc.rotate(0,0,90)
 
@@ -58,8 +58,8 @@ class Skeleton:
 
         mc.parent(self.rightLeg.j_hip, self.torso.j_root)
         mc.parent(self.leftLeg.j_hip, self.torso.j_root)
-        mc.parent(self.rightArm.j_sholder, self.torso.j_neck)
-        mc.parent(self.leftArm.j_sholder, self.torso.j_neck)
+        mc.parent(self.rightArm.j_shoulder, self.torso.j_neck)
+        mc.parent(self.leftArm.j_shoulder, self.torso.j_neck)
         mc.parent(self.leftHand.j_wrist, self.leftArm.j_elbow)
         mc.parent(self.rightHand.j_wrist, self.rightArm.j_elbow)
 
@@ -68,6 +68,9 @@ class Skeleton:
 
         mc.parent(self.torso.j_root, self.j_root)
 
+        mc.setAttr(self.j_root+ " | " + self.torso.j_root+".segmentScaleCompensate", 0)
+
+        mc.select(cl=True)
 
 
 
@@ -75,4 +78,4 @@ class Skeleton:
 
 
 
-Skeleton('artemie')
+#Skeleton('artemie')

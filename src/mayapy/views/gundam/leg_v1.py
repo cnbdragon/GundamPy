@@ -50,7 +50,7 @@ class Leg():
 
 
         self.j_hip = mc.joint(p=(0,107,-12), n=name+'_hip')
-        self.j_knee = mc.joint(p=(0,54,-12), n=name+'_knee')
+        self.j_knee = mc.joint(p=(0,54,-11), n=name+'_knee')
         #self.j_toe = mc.joint(p=(0,0,2), n=name+'_toe')
 
         mc.parent(self.femur,self.j_hip)

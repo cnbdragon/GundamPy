@@ -3,6 +3,8 @@
 # Scott Ernst
 
 from pyglass.widgets.PyGlassWidget import PyGlassWidget
+from gundam_skeleton_v1 import Skeleton
+from enum import Enum
 
 #___________________________________________________________________________________________________ Assignment2Widget
 class GundamWidget(PyGlassWidget):
@@ -28,15 +30,5 @@ class GundamWidget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleLeftFootButton(self):
-        """
-        This callback creates a polygonal cylinder in the Maya scene.
+        seleton_1 = Skeleton("bob");
 
-        """
-        r = 5
-        a = 2.0*r
-        y = (0, 1, 0)
-        c = cmds.polyCylinder(
-            r=r, h=5, sx=40, sy=1, sz=1, ax=y, rcp=0, cuv=2, ch=1, n='exampleCylinder')[0]
-        cmds.select(c)
-        response = nimble.createRemoteResponse(globals())
-        response.put('name', c)

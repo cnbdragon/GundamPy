@@ -6,7 +6,7 @@ from PySide import QtGui
 
 from pyglass.widgets.PyGlassWidget import PyGlassWidget
 
-from mayapy.enum.UserConfigEnum import UserConfigEnum
+from mayapy.mayapy_enum.UserConfigEnum import UserConfigEnum
 from mayapy.views.home.NimbleStatusElement import NimbleStatusElement
 
 #___________________________________________________________________________________________________ MayaPyHomeWidget
