@@ -4,7 +4,8 @@
 
 from pyglass.widgets.PyGlassWidget import PyGlassWidget
 from gundam_skeleton_v1 import Skeleton
-from gundam_v2 import Gundam
+from gundam_v2 import Gundam as Gundam
+from gundam_v3 import Gundam as Gundam3
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget,listOfMaterialShader,listOfMaterials
 from enum import Enum
 
