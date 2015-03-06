@@ -15,6 +15,7 @@ greyCPlasticSG = None
 blueCPlasticSG = None
 chromeSG = None
 npchromeSG = None
+global goldSG
 goldSG = None
 shinyGoldSG = None
 silverSG = None
@@ -189,7 +190,7 @@ def gold():
     ### gold
     global goldSG
     chrome = mc.shadingNode('blinn',asShader=True, n='gold')
-    goldSG = mc.sets(r=True, nss=True, em=True, n='chromeSG')
+    goldSG = mc.sets(r=True, nss=True, em=True, n='goldSG')
     mc.connectAttr(chrome+'.outColor',goldSG+'.surfaceShader')
     mc.setAttr(chrome+'.color',0.0,0.0,0.0,type='double3')
     mc.setAttr(chrome+'.transparency', 0.0, 0.0, 0.0, type='double3')
@@ -203,7 +204,7 @@ def shinyGold():
     ### gold
     global shinyGoldSG
     chrome = mc.shadingNode('blinn',asShader=True, n='shinyGold')
-    shinyGoldSG = mc.sets(r=True, nss=True, em=True, n='chromeSG')
+    shinyGoldSG = mc.sets(r=True, nss=True, em=True, n='ShinyGoldSG')
     mc.connectAttr(chrome+'.outColor',shinyGoldSG+'.surfaceShader')
     mc.setAttr(chrome+'.color',0.75, 0.5, 0.12,type='double3')
     mc.setAttr(chrome+'.transparency', 0.0, 0.0, 0.0, type='double3')
@@ -228,6 +229,7 @@ def silver():
     mc.setAttr(chrome+'.reflectivity', 2.0)
 
 
+'''
 #build all of the default shaders
 redAnodizedAluminum()
 blueAnodizedAluminum()
@@ -241,7 +243,7 @@ npchrome()
 gold()
 shinyGold()
 silver()
-
+'''
 
 '''
 redAASphere = mc.polySphere(r=5,n='redAASphere')[0]

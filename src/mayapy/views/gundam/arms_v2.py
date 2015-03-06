@@ -18,7 +18,7 @@ class Arm():
 
         self._createGeometry(name, side)
         self._createJoints(name, side)
-
+        self._createIK(name, side)
 
         self._deleteHistory()
         pass
@@ -61,6 +61,21 @@ class Arm():
     def _deleteHistory(self):
         mc.select(self.j_shoulder)
         mc.delete(ch=True)
+
+    def _createIK(self,name,side):
+        #self.ik_wrist = mc.ikHandle(sj = self.j_shoulder, ee= self.hand.j_wrist, n=name+"_wrist_ik")
+        #self.ik_ball = mc.ikHandle(sj = self.foot.j_ankle, ee=self.foot.j_ball, n=name+"_ball_ik")
+        #self.ik_toe = mc.ikHandle(sj = self.foot.j_ball, ee=self.foot.j_toe, n=name+"_toe_ik")
+
+        '''
+        self.h_foot = mc.circle(nr=(0,1,0), c=(0,0,-12), r=20, n=name+"_foot_IK_handle")[0]
+        mc.move(0,3,-12, self.h_foot+".scalePivot", self.h_foot+".rotatePivot")
+        mc.parentConstraint( self.h_foot, self.ik_ankle[0], mo=True)
+        mc.parentConstraint( self.h_foot, self.ik_ball[0], mo=True)
+        mc.parentConstraint( self.h_foot, self.ik_toe[0], mo=True)
+        #self.ik = mc.group(ankle_ik, ball_ik, toe_ik, n=name+"_leg_IK")
+        '''
+        pass
 
 #Arm('right', Side.right)
 mc.select(cl=True)

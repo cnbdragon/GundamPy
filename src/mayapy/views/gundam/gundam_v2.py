@@ -81,13 +81,13 @@ class Gundam:
         self.parentIKToRoot()
 
     def parentIKToRoot(self):
-        mc.parent(self.rightLeg.ik_ankle, self.j_root)
-        mc.parent(self.rightLeg.ik_ball, self.j_root)
-        mc.parent(self.rightLeg.ik_toe, self.j_root)
+        mc.parent(self.rightLeg.ik_ankle[0], self.j_root)
+        mc.parent(self.rightLeg.ik_ball[0], self.j_root)
+        mc.parent(self.rightLeg.ik_toe[0], self.j_root)
 
-        mc.parent(self.leftLeg.ik_ankle, self.j_root)
-        mc.parent(self.leftLeg.ik_ball, self.j_root)
-        mc.parent(self.leftLeg.ik_toe, self.j_root)
+        mc.parent(self.leftLeg.ik_ankle[0], self.j_root)
+        mc.parent(self.leftLeg.ik_ball[0], self.j_root)
+        mc.parent(self.leftLeg.ik_toe[0], self.j_root)
         pass
 
     def attachIKToRoot(self):
@@ -100,6 +100,33 @@ class Gundam:
         mc.parent(self.j_root+"|"+self.rightLeg.h_foot, world=True)
         pass
 
+    def attachArmsIKToRoot(self):
+        mc.parent(self.leftLeg.h_foot, self.j_root)
+        mc.parent(self.rightLeg.h_foot, self.j_root)
+        pass
+
+    def detachArmsIKFromRoot(self):
+        mc.parent(self.j_root+"|"+self.leftLeg.h_foot, world=True)
+        mc.parent(self.j_root+"|"+self.rightLeg.h_foot, world=True)
+        pass
+
+    def attachLegsIKToRoot(self):
+        mc.parent(self.leftLeg.h_foot, self.j_root)
+        mc.parent(self.rightLeg.h_foot, self.j_root)
+        pass
+
+    def detachLegsIKFromRoot(self):
+        mc.parent(self.j_root+"|"+self.leftLeg.h_foot, world=True)
+        mc.parent(self.j_root+"|"+self.rightLeg.h_foot, world=True)
+        pass
+
+    def __str__(self):
+        return self.name
+        pass
+
+    def scale(self,ratio):
+        mc.select(self.j_root)
+        mc.scale(ratio, ratio, ratio, r=True)
 
 
 #Skeleton('artemie')
