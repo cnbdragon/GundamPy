@@ -17,19 +17,20 @@ class Gundam:
     def __init__(self, name):
         self.name = name
 
-        mc.select(cl=True)
-        self.rightHand = hand.Hand('right', Side.right)
-        mc.select(cl=True)
-        self.leftHand = hand.Hand('left', Side.left)
 
-        self.leftLeg = leg.Leg('left', Side.left)
         mc.select(cl=True)
-        self.rightLeg = leg.Leg('right', Side.right)
+        self.rightHand = hand.Hand(name+'_right', Side.right)
+        mc.select(cl=True)
+        self.leftHand = hand.Hand(name+'_left', Side.left)
+
+        self.leftLeg = leg.Leg(name+'_left', Side.left)
+        mc.select(cl=True)
+        self.rightLeg = leg.Leg(name+'_right', Side.right)
         mc.select(cl=True)
 
-        self.leftArm = arms.Arm('left', Side.left)
+        self.leftArm = arms.Arm(name+'_left', Side.left)
         mc.select(cl=True)
-        self.rightArm = arms.Arm('right', Side.right)
+        self.rightArm = arms.Arm(name+'_right', Side.right)
         mc.select(cl=True)
 
 
@@ -77,9 +78,27 @@ class Gundam:
 
         mc.select(cl=True)
 
+        self.parentIKToRoot()
 
+    def parentIKToRoot(self):
+        mc.parent(self.rightLeg.ik_ankle, self.j_root)
+        mc.parent(self.rightLeg.ik_ball, self.j_root)
+        mc.parent(self.rightLeg.ik_toe, self.j_root)
 
+        mc.parent(self.leftLeg.ik_ankle, self.j_root)
+        mc.parent(self.leftLeg.ik_ball, self.j_root)
+        mc.parent(self.leftLeg.ik_toe, self.j_root)
+        pass
 
+    def attachIKToRoot(self):
+        mc.parent(self.leftLeg.h_foot, self.j_root)
+        mc.parent(self.rightLeg.h_foot, self.j_root)
+        pass
+
+    def detachIKFromRoot(self):
+        mc.parent(self.j_root+"|"+self.leftLeg.h_foot, world=True)
+        mc.parent(self.j_root+"|"+self.rightLeg.h_foot, world=True)
+        pass
 
 
 

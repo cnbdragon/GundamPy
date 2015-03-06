@@ -21,6 +21,7 @@ class GundamWidget(PyGlassWidget):
 
         self.SkeletonBtn.clicked.connect(self._handleSkeletonButton)
         self.V2Btn.clicked.connect(self._handleV2Button)
+        self.strikeBtn.clicked.connect(self._handleStrikeButton)
         self.homeBtn.clicked.connect(self._handleReturnHome)
 
 #===================================================================================================
@@ -38,4 +39,9 @@ class GundamWidget(PyGlassWidget):
     def _handleV2Button(self):
         gundam = Gundam("Jeremy")
 
+
+#___________________________________________________________________________________________________ _handleLeftFootBtn
+    def _handleStrikeButton(self):
+        print(self.maleName.text())
+        gundam = Gundam(self.maleName.text())
 
