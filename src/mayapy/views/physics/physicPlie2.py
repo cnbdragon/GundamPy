@@ -1,13 +1,103 @@
 from nimble import cmds as mc
 from mayapy.views.gundam.gundam_skeleton_v1 import Skeleton
+
+class typeOfPlie():
+    def __init__(self,num):
+        self.num = num
+        if self.num == 1:
+            self.feetFirst()
+        elif self.num == 2:
+            self.feetSecond()
+        elif self.num == 3:
+            self.feetThird()
+        elif self.num == 4:
+            self.feetFourth()
+        else:
+            self.feetFifth()
+    def feetFirst(self):
+        plie = Plies(60)
+        plie.moveHip(-20,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 90
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 1200
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetSecond(self):
+        plie = Plies(2)
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetThird(self):
+        plie = Plies(2)
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetFourth(self):
+        plie = Plies(2)
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetFifth(self):
+        plie = Plies(2)
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+
 class Plies():
-    def __init__(self):
+    def __init__(self,timel):
         self.gravity= 9.8 #m/s^2
         self.velocity = 0 #m/s
         self.position = [("x",0),("y",0),("z",0)]
         self.rotation = [("ankle",0),("knee",0),("hip",0)]
-
-
+        self.skeletons = [Skeleton("ana")]
+        self.timel = timel
     def getPosition(self):
         return self.position
 
@@ -15,34 +105,46 @@ class Plies():
         return self.rotation
 
     def getGundamFeet(self):
-        feet_leftleg = Skeleton.leftLeg.j_ankle
-        feet_rightleg = Skeleton.rightLeg.j_ankle
+        feet_leftleg  = self.skeletons[0].leftLeg.foot.j_ankle
+        feet_rightleg = self.skeletons[0].rightLeg.foot.j_ankle
         return [feet_leftleg,feet_rightleg]
 
     def getGundamHip(self):
-        hip_left = Skeleton.leftLeg.j_hip
-        hip_right = Skeleton.rightLeg.j_hip
+        hip_left  = self.skeletons[0].leftLeg.j_hip
+        hip_right = self.skeletons[0].rightLeg.j_hip
         return [hip_left,hip_right]
 
     def getGundamFemur(self):
-        femur_left = Skeleton.leftLeg.j_knee
-        femur_right = Skeleton.rightLeg.j_knee
+        femur_left  = self.skeletons[0].leftLeg.j_knee
+        femur_right = self.skeletons[0].rightLeg.j_knee
         return [femur_left,femur_right]
 
-    def moveFeet(self):
+    def moveFeet(self,xrotate,yrotate,zrotate):
         feets = self.getGundamFeet()
+        mc.select(feets[0])
+        mc.rotate(xrotate,yrotate,zrotate)
+        mc.setKeyframe(feets[0],t=self.timel)
+        mc.select(feets[1])
+        mc.rotate(xrotate,yrotate,zrotate)
+        mc.setKeyframe(feets[1],t=self.timel)
 
-
-    def moveHip(self):
+    def moveHip(self,xrotate,yrotate,zrotate):
         hips = self.getGundamHip()
         mc.select(hips[0])
-        mc.rotate(0,90,0)
-        mc.setKeyframe(hips[0].name,t=1)
+        mc.rotate(-xrotate,yrotate,zrotate)
+        mc.setKeyframe(hips[0],t=self.timel)
         mc.select(hips[1])
-        mc.rotate(0,90,0)
-        mc.setKeyframe(hips[1].name,t=1)
-    def moveFemur(self):
-        pass
+        mc.rotate(-xrotate,-yrotate,zrotate)
+        mc.setKeyframe(hips[1],t=self.timel)
+
+    def moveFemur(self,xrotate,yrotate,zrotate):
+        femur = self.getGundamFemur()
+        mc.select(femur[0])
+        mc.rotate(xrotate,yrotate,zrotate)
+        mc.setKeyframe(femur[0],t=self.timel)
+        mc.select(femur[1])
+        mc.rotate(xrotate,yrotate,zrotate)
+        mc.setKeyframe(femur[1],t=self.timel)
 
     def moveToso(self):
         pass
