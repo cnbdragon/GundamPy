@@ -75,7 +75,7 @@ class typeOfPlie():
         else:
             self.feetFifth()
     def feetFirst(self):
-        plie.timel=30
+        plie.timel=31
         plie.timel = 90
         plie.moveHip(9,90,0)
         plie.moveFemur(0,0,0)
