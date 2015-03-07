@@ -1,95 +1,5 @@
 from nimble import cmds as mc
 from mayapy.views.gundam.gundam_skeleton_v1 import Skeleton
-
-class typeOfPlie():
-    def __init__(self,num):
-        self.num = num
-        if self.num == 1:
-            self.feetFirst()
-        elif self.num == 2:
-            self.feetSecond()
-        elif self.num == 3:
-            self.feetThird()
-        elif self.num == 4:
-            self.feetFourth()
-        else:
-            self.feetFifth()
-    def feetFirst(self):
-        plie = Plies(60)
-        plie.moveHip(-20,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-        #middle
-        plie.timel = 90
-        plie.moveHip(30,90,0)
-        plie.moveFemur(40,0,0)
-        plie.moveFeet(-15,0,0)
-        #end
-        plie.timel = 1200
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-    def feetSecond(self):
-        plie = Plies(2)
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-        #middle
-        plie.timel = 9
-        plie.moveHip(30,90,0)
-        plie.moveFemur(40,0,0)
-        plie.moveFeet(-15,0,0)
-        #end
-        plie.timel = 20
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-    def feetThird(self):
-        plie = Plies(2)
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-        #middle
-        plie.timel = 9
-        plie.moveHip(30,90,0)
-        plie.moveFemur(40,0,0)
-        plie.moveFeet(-15,0,0)
-        #end
-        plie.timel = 20
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-    def feetFourth(self):
-        plie = Plies(2)
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-        #middle
-        plie.timel = 9
-        plie.moveHip(30,90,0)
-        plie.moveFemur(40,0,0)
-        plie.moveFeet(-15,0,0)
-        #end
-        plie.timel = 20
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-    def feetFifth(self):
-        plie = Plies(2)
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-        #middle
-        plie.timel = 9
-        plie.moveHip(30,90,0)
-        plie.moveFemur(40,0,0)
-        plie.moveFeet(-15,0,0)
-        #end
-        plie.timel = 20
-        plie.moveHip(0,90,0)
-        plie.moveFemur(0,0,0)
-        plie.moveFeet(-15,0,0)
-
 class Plies():
     def __init__(self,timel):
         self.gravity= 9.8 #m/s^2
@@ -148,4 +58,95 @@ class Plies():
 
     def moveToso(self):
         pass
+
+
+plie= Plies(0)
+class typeOfPlie():
+    def __init__(self,num):
+        self.num = num
+        if self.num == 1:
+            self.feetFirst()
+        elif self.num == 2:
+            self.feetSecond()
+        elif self.num == 3:
+            self.feetThird()
+        elif self.num == 4:
+            self.feetFourth()
+        else:
+            self.feetFifth()
+    def feetFirst(self):
+        plie.timel=30
+        plie.timel = 90
+        plie.moveHip(9,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 120
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetSecond(self):
+        plie.timel=2
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetThird(self):
+        plie.timel=2
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetFourth(self):
+        plie.timel=2
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+    def feetFifth(self):
+        plie.timel=2
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
+        #middle
+        plie.timel = 9
+        plie.moveHip(30,90,0)
+        plie.moveFemur(40,0,0)
+        plie.moveFeet(-15,0,0)
+        #end
+        plie.timel = 20
+        plie.moveHip(0,90,0)
+        plie.moveFemur(0,0,0)
+        plie.moveFeet(-15,0,0)
 
