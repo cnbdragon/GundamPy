@@ -39,5 +39,5 @@ class PhysicWidget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleLeftFootButton(self):
-        seleton_1 = Skeleton("bob");
+        seleton_1 = Skeleton("bob")
 

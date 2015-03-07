@@ -9,7 +9,16 @@ from nimble import cmds
 from nimble import cmds as mc
 from pyglass.widgets.PyGlassWidget import PyGlassWidget
 import materials
-
+global listOfMaterials
+global listOfMaterialShader
+materials.gold()
+listOfMaterialShader=[materials.blueCPlasticSG,materials.goldSG]
+listOfMaterials = [materials.blueClearPlastic(),materials.gold()]
+print listOfMaterialShader[1]
+# listOfMaterials[1]
+# print materials.goldSG
+# materials.gold()
+# print materials.goldSG
 #___________________________________________________________________________________________________ Assignment2Widget
 class Assignment2Widget(PyGlassWidget):
     """A class for..."""
@@ -20,6 +29,7 @@ class Assignment2Widget(PyGlassWidget):
 #___________________________________________________________________________________________________ __init__
     def __init__(self, parent, **kwargs):
         """Creates a new instance of Assignment2Widget."""
+
         super(Assignment2Widget, self).__init__(parent, **kwargs)
 
         self.homeBtn.clicked.connect(self._handleReturnHome)
@@ -62,6 +72,9 @@ class Assignment2Widget(PyGlassWidget):
         mc.move(60,60,60)
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleRedAA(self):
+        if materials.redAASG == None:
+            materials.redAnodizedAluminum()
+        print materials.redAASG
         Sphere = mc.polySphere(r=5,n='redAASphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -69,6 +82,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleBlueAA(self):
+        if materials.blueAASG == None:
+            materials.blueAnodizedAluminum()
         Sphere = mc.polySphere(r=5,n='blueAASphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -76,6 +91,7 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleCustomAA(self):
+
         r = self.redSpin.value()
         g = self.greenSpin.value()
         b = self.blueSpin.value()
@@ -90,6 +106,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleRedFM(self):
+        if materials.redFMSG == None:
+            materials.redFineMettalic()
         Sphere = mc.polySphere(r=5,n='redFMSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -97,6 +115,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleBlueFM(self):
+        if materials.blueFMSG == None:
+            materials.blueFineMetallic()
         Sphere = mc.polySphere(r=5,n='blueFMSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -117,6 +137,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleGold(self):
+        if materials.goldSG == None:
+            materials.gold()
         Sphere = mc.polySphere(r=5,n='goldSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -124,6 +146,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleShinyGold(self):
+        if materials.shinyGoldSG == None:
+            materials.shinyGold()
         Sphere = mc.polySphere(r=5,n='shinyGoldSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -131,6 +155,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleSilver(self):
+        if materials.silverSG == None:
+            materials.silver()
         Sphere = mc.polySphere(r=5,n='sliverSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -138,6 +164,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleChrome(self):
+        if materials.chromeSG == None:
+            materials.chrome()
         Sphere = mc.polySphere(r=5,n='chromeSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -145,6 +173,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleChromeTex(self):
+        if materials.npchromeSG == None:
+            materials.npchrome()
         Sphere = mc.polySphere(r=5,n='texChromephere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -152,6 +182,7 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleChromeFileTex(self):
+
         Sphere = mc.polySphere(r=5,n='fileChromeSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -159,6 +190,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handlePlastic(self):
+        if materials.cPlasticSG == None:
+            materials.clearPlastic()
         Sphere = mc.polySphere(r=5,n='plasticSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -166,6 +199,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handlePlasticGrey(self):
+        if materials.greyCPlasticSG == None:
+            materials.greyClearPlastic()
         Sphere = mc.polySphere(r=5,n='greyPlasticSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
@@ -173,6 +208,8 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handlePlasticBlue(self):
+        if materials.blueCPlasticSG == None:
+            materials.blueClearPlastic()
         Sphere = mc.polySphere(r=5,n='bluePlasticSphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
