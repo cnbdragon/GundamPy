@@ -9,7 +9,7 @@ from pyglass.windows.PyGlassWindow import PyGlassWindow
 from mayapy.views.home.MayaPyHomeWidget import MayaPyHomeWidget
 from mayapy.views.assignment1.Assignment1Widget import Assignment1Widget
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget
-from mayapy.views.gundam.GundamWidget2 import GundamWidget
+from mayapy.views.gundam.GundamWidget import GundamWidget
 from mayapy.views.physics.PhysicsWidget import PhysicWidget
 
 #___________________________________________________________________________________________________ MayaPyMainWindow

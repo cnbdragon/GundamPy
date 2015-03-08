@@ -85,7 +85,7 @@ class Hand():
          #bone
          mc.select(cl=True)
 
-         self.j_wrist = mc.joint(p=(0,0,0), n='wrist')
+         self.j_wrist = mc.joint(p=(0,0,0), n=self.name+'_wrist')
 
          '''self.j_r_p_n_2 = mc.joint( p=(offset,4.25+(2*self.segOffset),.25),dof='x')
 

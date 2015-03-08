@@ -247,14 +247,14 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_8">
        <item>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="attachArmsBtn">
          <property name="text">
           <string>Attach</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="detachArmsBtn">
          <property name="text">
           <string>Detach</string>
          </property>
@@ -270,14 +270,14 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="attachFeetBtn">
          <property name="text">
           <string>Attach</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="detachFeetBtn">
          <property name="text">
           <string>Detach</string>
          </property>

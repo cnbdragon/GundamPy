@@ -6,6 +6,8 @@ from pyglass.widgets.PyGlassWidget import PyGlassWidget
 from gundam_skeleton_v1 import Skeleton
 from gundam_v2 import Gundam as Gundam
 from gundam_v3 import Gundam as Gundam3
+from gundam_v3 import Gundam as GundamStrike
+from gundam_v3 import Gundam as GundamArtemie
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget,listOfMaterialShader,listOfMaterials
 from enum import Enum
 
@@ -29,9 +31,14 @@ class GundamWidget(PyGlassWidget):
         self.homeBtn.clicked.connect(self._handleReturnHome)
         self.attachAllBtn.clicked.connect(self._handleAttachAllButton)
         self.detachAllBtn.clicked.connect(self._handleDetachAllButton)
+        self.attachArmsBtn.clicked.connect(self._handleAttachArmButton)
+        self.detachArmsBtn.clicked.connect(self._handleDetachArmButton)
+        self.attachFeetBtn.clicked.connect(self._handleAttachLegButton)
+        self.detachFeetBtn.clicked.connect(self._handleDetachLegButton)
+
         #listOfMaterials.__repr__()
 
-        self.gundamTypeListCB.addItem("Gundam v1")
+        #self.gundamTypeListCB.addItem("Gundam v1")
         self.gundamTypeListCB.addItem("Gundam v2")
         self.gundamTypeListCB.addItem("Gundam v3")
         self.gundamTypeListCB.addItem("Strike")
@@ -65,7 +72,17 @@ class GundamWidget(PyGlassWidget):
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleStrikeButton(self):
         print(self.maleName.text())
-        gundam = Gundam(self.maleName.text())
+        idx = self.gundamTypeListCB.currentIndex()
+        if idx == 0:
+            gundam = Gundam(self.maleName.text())
+        elif idx == 1:
+            gundam = Gundam3(self.maleName.text())
+        elif idx == 2:
+            gundam = GundamStrike(self.maleName.text())
+        elif idx == 3:
+            gundam = GundamArtemie(self.maleName.text())
+
+        #gundam = Gundam(self.maleName.text())
         self.gundams.append(gundam)
         self.gundamList.addItem(gundam.name)
         gundam.attachIKToRoot()
