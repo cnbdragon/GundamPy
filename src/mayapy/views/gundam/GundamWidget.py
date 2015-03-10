@@ -6,7 +6,7 @@ from pyglass.widgets.PyGlassWidget import PyGlassWidget
 from gundam_skeleton_v1 import Skeleton
 from gundam_v2 import Gundam as Gundam
 from gundam_v3 import Gundam as Gundam3
-from gundam_v3 import Gundam as GundamStrike
+from gundam_strike_v1 import Gundam as GundamStrike
 from gundam_v3 import Gundam as GundamArtemie
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget,listOfMaterialShader,listOfMaterials
 from enum import Enum
@@ -107,22 +107,22 @@ class GundamWidget(PyGlassWidget):
     def _handleAttachArmButton(self):
         idx = self.gundamList.currentIndex()
         temp = self.gundams[idx]
-        temp.attachArmIKToRoot()
+        temp.attachArmsIKToRoot()
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleDetachArmButton(self):
         idx = self.gundamList.currentIndex()
         temp = self.gundams[idx]
-        temp.detachArmIKFromRoot()
+        temp.detachArmsIKFromRoot()
 
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleAttachLegButton(self):
         idx = self.gundamList.currentIndex()
         temp = self.gundams[idx]
-        temp.attachLegIKToRoot()
+        temp.attachLegsIKToRoot()
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleDetachLegButton(self):
         idx = self.gundamList.currentIndex()
         temp = self.gundams[idx]
-        temp.detachLegIKFromRoot()
+        temp.detachLegsIKFromRoot()
 
 
