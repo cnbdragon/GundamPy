@@ -91,7 +91,8 @@ class GundamWidget(PyGlassWidget):
         ratio = size / 20.0
         print(ratio)
         gundam.scale(ratio)
-        plie = PlieIk("first",gundam)
+        plie = PlieIk("first",0,160,gundam)
+        #plie2 = PlieIk("second",160,320,gundam)
 
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleAttachAllButton(self):
