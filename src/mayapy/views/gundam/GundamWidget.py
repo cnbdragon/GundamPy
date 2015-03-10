@@ -95,7 +95,9 @@ class GundamWidget(PyGlassWidget):
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleAttachAllButton(self):
         idx = self.gundamList.currentIndex()
+   
         temp = self.gundams[idx]
+
         temp.attachIKToRoot()
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleDetachAllButton(self):
@@ -118,11 +120,11 @@ class GundamWidget(PyGlassWidget):
     def _handleAttachLegButton(self):
         idx = self.gundamList.currentIndex()
         temp = self.gundams[idx]
-        temp.attachLegIKToRoot()
+        temp.attachLegsIKToRoot()
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleDetachLegButton(self):
         idx = self.gundamList.currentIndex()
         temp = self.gundams[idx]
-        temp.detachLegIKFromRoot()
+        temp.detachLegsIKFromRoot()
 
 

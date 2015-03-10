@@ -35,6 +35,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>skeleton v1</string>
    </property>
@@ -48,6 +54,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>skeleton v2</string>
    </property>
@@ -58,7 +70,7 @@
      <x>0</x>
      <y>40</y>
      <width>313</width>
-     <height>471</height>
+     <height>541</height>
     </rect>
    </property>
    <property name="title">
@@ -79,6 +91,15 @@
     </item>
     <item>
      <widget class="QPushButton" name="strikeDefaultBtn">
+      <property name="font">
+       <font>
+        <family>Helvetica</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Build Default</string>
       </property>
@@ -317,7 +338,7 @@
      <x>560</x>
      <y>60</y>
      <width>191</width>
-     <height>53</height>
+     <height>91</height>
     </rect>
    </property>
    <property name="title">
