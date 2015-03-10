@@ -10,6 +10,7 @@ from gundam_v3 import Gundam as GundamStrike
 from gundam_v3 import Gundam as GundamArtemie
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget,listOfMaterialShader,listOfMaterials
 from enum import Enum
+from mayapy.views.physics.PhysicPlieIk import PlieIk
 
 #___________________________________________________________________________________________________ Assignment2Widget
 class GundamWidget(PyGlassWidget):
@@ -90,12 +91,12 @@ class GundamWidget(PyGlassWidget):
         ratio = size / 20.0
         print(ratio)
         gundam.scale(ratio)
-
+        plie = PlieIk("first",gundam)
 
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleAttachAllButton(self):
         idx = self.gundamList.currentIndex()
-   
+
         temp = self.gundams[idx]
 
         temp.attachIKToRoot()
