@@ -6,7 +6,7 @@ class Plies():
         self.velocity = 0 #m/s
         self.position = [("x",0),("y",0),("z",0)]
         self.rotation = [("ankle",0),("knee",0),("hip",0)]
-        self.skeletons = [Skeleton("ana")]
+        self.skeletons = []
         self.timel = timel
     def getPosition(self):
         return self.position

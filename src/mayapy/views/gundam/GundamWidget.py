@@ -11,7 +11,7 @@ from gundam_v3 import Gundam as GundamArtemie
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget,listOfMaterialShader,listOfMaterials
 from enum import Enum
 from mayapy.views.physics.PhysicPlieIk import PlieIk
-
+gundams_need = []
 #___________________________________________________________________________________________________ Assignment2Widget
 class GundamWidget(PyGlassWidget):
     """A class for..."""
@@ -72,6 +72,7 @@ class GundamWidget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleLeftFootBtn
     def _handleStrikeButton(self):
+        global gundams_need
         print(self.maleName.text())
         idx = self.gundamTypeListCB.currentIndex()
         if idx == 0:
@@ -91,7 +92,9 @@ class GundamWidget(PyGlassWidget):
         ratio = size / 20.0
         print(ratio)
         gundam.scale(ratio)
-        plie = PlieIk("first",0,160,gundam)
+        print self.gundams
+        gundams_need.append((gundam,"second"))
+        #plie = PlieIk("first",0,160,gundam)
         #plie2 = PlieIk("second",160,320,gundam)
 
 #___________________________________________________________________________________________________ _handleLeftFootBtn
