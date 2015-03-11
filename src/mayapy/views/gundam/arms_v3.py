@@ -70,7 +70,7 @@ class Arm():
         #self.ik_toe = mc.ikHandle(sj = self.foot.j_ball, ee=self.foot.j_toe, n=name+"_toe_ik")
 
 
-        self.h_hand = mc.circle(nr=(0,1,0), c=(0,0,-12), r=20, n=name+"_hand_IK_handle")[0]
+        self.h_hand = mc.circle(nr=(0,1,0), c=(0,0,0), r=20, n=name+"_hand_IK_handle")[0]
 
         mc.move(0,3,-12, self.h_hand+".scalePivot", self.h_hand+".rotatePivot")
         mc.parentConstraint( self.h_hand, self.ik_wrist[0], mo=True)
@@ -79,6 +79,7 @@ class Arm():
         mc.parentConstraint( self.h_foot, self.ik_toe[0], mo=True)
         #self.ik = mc.group(ankle_ik, ball_ik, toe_ik, n=name+"_leg_IK")
         '''
+        mc.parent(self.h_hand,self.radius)
         pass
 
 #Arm('right', Side.right)

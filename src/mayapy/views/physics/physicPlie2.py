@@ -60,7 +60,7 @@ class Plies():
         pass
 
 
-plie= Plies(0)
+#plie= Plies(0)
 class typeOfPlie():
     def __init__(self,num):
         self.num = num

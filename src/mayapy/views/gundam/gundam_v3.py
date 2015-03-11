@@ -8,7 +8,7 @@
 import nimble
 from nimble import cmds as mc
 from gundam_enums import Side
-import hand_v2 as hand
+#import hand_v2 as hand
 import leg_v3 as leg
 import arms_v3 as arms
 import torso_v3 as torso

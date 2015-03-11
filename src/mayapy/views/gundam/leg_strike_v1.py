@@ -64,7 +64,7 @@ class Leg():
 
         #claf1 = mc.polyUnite(p1,p2,p3)
         #print calf1
-        #calf1 = mc.polyBoolOp(p1, p3, op=1, n='calf')[0]
+        calf1 = mc.polyBoolOp(p1, p3, op=1, n='calf')[0]
         #calf2 = mc.polyBoolOp(calf1, p2, op=1, n='calf')[0]
 
         p4 = mc.polyCube(w=10, h=10, d=10)

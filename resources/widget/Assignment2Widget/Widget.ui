@@ -384,46 +384,27 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QComboBox" name="comboBox">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QLineEdit" name="customeName">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>69</width>
-      <height>22</height>
+      <x>50</x>
+      <y>20</y>
+      <width>113</width>
+      <height>20</height>
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>30</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_23">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>80</y>
-      <width>75</width>
-      <height>23</height>
+      <x>10</x>
+      <y>20</y>
+      <width>46</width>
+      <height>13</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Name</string>
     </property>
    </widget>
   </widget>

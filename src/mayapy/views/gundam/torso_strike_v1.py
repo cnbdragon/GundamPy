@@ -19,8 +19,6 @@ class Torso():
         self._createGeometry(name)
         self._createJoints(name)
 
-        self._createIK(name)
-
 
         self._deleteHistory()
         pass
@@ -66,27 +64,13 @@ class Torso():
 
 
         self.j_root = mc.joint(p=(0,0,0), n=name+'_j_root')
-        self.j_s1 = mc.joint(p=(0,11,1), n=name+'_j_s1')
-        self.j_s2 = mc.joint(p=(0,22,1), n=name+'_j_s2')
-        self.j_s3 = mc.joint(p=(0,33,1), n=name+'_j_s3')
-        self.j_s4 = mc.joint(p=(0,44,1), n=name+'_j_s4')
-        self.j_s5 = mc.joint(p=(0,55,1), n=name+'_j_s5')
         self.j_neck = mc.joint(p=(0,67,0), n=name+'_j_neck')
 
-        mc.select(cl=True)
-        self.j_bind_root = mc.joint(p=(0,0,0), n=name+'_j_bind_root')
-        mc.select(cl=True)
-        self.j_bind_neck = mc.joint(p=(0,67,0), n=name+'_j_bind_neck')
 
         mc.parent(self.torso,self.j_root)
         mc.parent(self.clavical,self.j_neck)
 
         pass
-
-
-    def _createIK(self, name):
-        self.ik_ankle = mc.ikHandle(sj = self.j_root, ee= self.j_neck, n=name+"_spine_ik", sol='ikSplineSolver')
-        print self.ik_ankle
 
     def _deleteHistory(self):
         mc.select(self.j_root)

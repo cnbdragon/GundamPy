@@ -11,7 +11,8 @@ from gundam_enums import Side
 #import hand_v2 as hand
 import leg_strike_v1 as leg
 import arms_v3 as arms
-import torso_v3 as torso
+import torso_strike_v1 as torso
+import head_strike_v1 as head
 
 class Gundam:
     def __init__(self, name):
@@ -32,7 +33,6 @@ class Gundam:
         mc.select(cl=True)
         self.rightArm = arms.Arm(name+'_right', Side.right)
         mc.select(cl=True)
-
 
         mc.select(self.rightArm.hand.j_wrist)
         #mc.move(-112, 173, 0, r=True)
@@ -62,6 +62,10 @@ class Gundam:
         mc.select(self.torso.j_root)
         mc.move(0,107,0)
 
+        self.head = head.Head(name)
+        mc.select(self.head.head)
+        mc.move(0,189,0)
+
         mc.parent(self.rightLeg.j_hip, self.torso.j_root)
         mc.parent(self.leftLeg.j_hip, self.torso.j_root)
         mc.parent(self.rightArm.j_shoulder, self.torso.j_neck)
@@ -80,7 +84,7 @@ class Gundam:
 
         self.parentIKToRoot()
 
-        print self.leftArm.h_hand
+        #print self.leftArm.h_hand
 
     def parentIKToRoot(self):
         mc.parent(self.rightLeg.ik_ankle[0], self.j_root)
@@ -138,4 +142,4 @@ class Gundam:
         mc.scale(ratio, ratio, ratio, r=True)
 
 
-Gundam('strike')
+#Gundam('strike')
