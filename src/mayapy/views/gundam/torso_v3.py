@@ -78,6 +78,18 @@ class Torso():
         mc.select(cl=True)
         self.j_bind_neck = mc.joint(p=(0,67,0), n=name+'_j_bind_neck')
 
+        #mc.parent(self.j_bind_root, self.j_root)
+        #mc.parent(self.j_bind_neck, self.j_neck)
+
+        self.h_hips = mc.circle(nr=(0,1,0), c=(0,0,0), r=50, n=name+"_hips_IK_handle")[0]
+        self.h_shoulders = mc.circle(nr=(0,1,0), c=(0,67,0), r=70, n=name+"_shoulders_IK_handle")[0]
+        mc.move(0,67,0, self.h_shoulders+".scalePivot", self.h_shoulders+".rotatePivot")
+
+        mc.parentConstraint( self.h_hips, self.j_bind_root, mo=True)
+        mc.parentConstraint( self.h_shoulders, self.j_bind_neck, mo=True)
+        #mc.parent(self.h_hips, self.torso)
+        #mc.parent(self.h_shoulders, self.torso)
+
         mc.parent(self.torso,self.j_root)
         mc.parent(self.clavical,self.j_neck)
 
@@ -85,8 +97,9 @@ class Torso():
 
 
     def _createIK(self, name):
-        self.ik_ankle = mc.ikHandle(sj = self.j_root, ee= self.j_neck, n=name+"_spine_ik", sol='ikSplineSolver')
-        print self.ik_ankle
+        self.ik_spine = mc.ikHandle(sj = self.j_root, ee= self.j_neck, n=name+"_spine_ik", sol='ikSplineSolver')
+        print self.ik_spine
+        mc.skinCluster(self.j_bind_root, self.j_bind_neck, self.ik_spine[2], tsb=True, mi=2)
 
     def _deleteHistory(self):
         mc.select(self.j_root)

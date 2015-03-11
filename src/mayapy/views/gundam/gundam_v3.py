@@ -58,9 +58,14 @@ class Gundam:
         mc.move(28,90,0, r=True)
         mc.rotate(0,0,90)
 
-        self.torso = torso.Torso('torso')
+        self.torso = torso.Torso(name+'_torso')
         mc.select(self.torso.j_root)
+        mc.select(self.torso.j_bind_root, add=True)
         mc.move(0,107,0)
+        mc.select(self.torso.j_bind_neck)
+        mc.select(self.torso.h_hips, add=True)
+        mc.select(self.torso.h_shoulders, add=True)
+        mc.move(0,107,0, r=True)
 
         mc.parent(self.rightLeg.j_hip, self.torso.j_root)
         mc.parent(self.leftLeg.j_hip, self.torso.j_root)
@@ -93,6 +98,11 @@ class Gundam:
 
         mc.parent(self.leftArm.ik_wrist[0], self.j_root)
         mc.parent(self.rightArm.ik_wrist[0], self.j_root)
+
+        mc.parent(self.torso.ik_spine[0], self.j_root)
+        mc.parent(self.torso.j_bind_root, self.j_root)
+        mc.parent(self.torso.j_bind_neck, self.j_root)
+        #mc.parent(self.rightArm.ik_wrist[0], self.j_root)
         pass
 
     def attachIKToRoot(self):
@@ -100,6 +110,8 @@ class Gundam:
         mc.parent(self.rightLeg.h_foot, self.j_root)
         mc.parent(self.leftArm.h_hand, self.j_root)
         mc.parent(self.rightArm.h_hand, self.j_root)
+        mc.parent(self.torso.h_shoulders, self.j_root)
+        mc.parent(self.torso.h_hips, self.j_root)
         pass
 
     def detachIKFromRoot(self):
