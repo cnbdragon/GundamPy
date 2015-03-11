@@ -16,7 +16,7 @@ import torso_v3 as torso
 class Gundam:
     def __init__(self, name):
         self.name = name
-
+        self.currentFeet = "parrallel"
         '''
         mc.select(cl=True)
         self.rightHand = hand.Hand(name+'_right', Side.right)

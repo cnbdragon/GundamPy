@@ -37,7 +37,7 @@ class Leg():
         mc.move(0,54,-12, self.tibia+".scalePivot", self.tibia+".rotatePivot")
 
         #create feamer
-        self.femur = mc.polyCube(sx=1, sy=1, sz=1, w=3,h=50, d=3, n=name+'_feamer')[0]
+        self.femur = mc.polyCube(sx=1, sy=1, sz=1, w=3,h=50, d=3, n=name+'_femur')[0]
         mc.move(0,80,-12)
         self.hip = mc.polySphere(r=5,n=name+'_hip')
         mc.move(0,107,-12)
