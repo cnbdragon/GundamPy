@@ -10,13 +10,19 @@
     <height>364</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <widget class="QPushButton" name="homeBtn">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>300</y>
      <width>101</width>
      <height>41</height>
@@ -25,7 +31,7 @@
    <property name="font">
     <font>
      <family>Arial</family>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -89,11 +95,17 @@
   <widget class="QLabel" name="startLabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>50</y>
      <width>71</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Start Time</string>
@@ -107,6 +119,12 @@
      <width>62</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>End Time</string>
@@ -134,6 +152,12 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Which Plie</string>
    </property>
@@ -147,6 +171,12 @@
      <height>32</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Click to Plie </string>
    </property>
@@ -154,7 +184,7 @@
   <widget class="QLabel" name="armLabel">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>310</x>
      <y>10</y>
      <width>62</width>
      <height>16</height>
@@ -167,8 +197,8 @@
   <widget class="QComboBox" name="armBox">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>50</y>
+     <x>270</x>
+     <y>90</y>
      <width>111</width>
      <height>26</height>
     </rect>
@@ -177,21 +207,21 @@
   <widget class="QPushButton" name="armBtn">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>90</y>
-     <width>114</width>
+     <x>250</x>
+     <y>160</y>
+     <width>141</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
-    <string>click to arms</string>
+    <string>click to add arms</string>
    </property>
   </widget>
   <widget class="QPushButton" name="jumpBtn">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>170</y>
+     <x>500</x>
+     <y>160</y>
      <width>114</width>
      <height>32</height>
     </rect>
@@ -222,7 +252,7 @@
   <widget class="QSpinBox" name="endTimeBox_2">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>580</x>
      <y>90</y>
      <width>57</width>
      <height>25</height>
@@ -236,6 +266,58 @@
    </property>
    <property name="value">
     <number>1</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>50</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Which arms</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>10</y>
+     <width>62</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Jumps</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="startLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>50</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Start Time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="endLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>50</y>
+     <width>62</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>End Time</string>
    </property>
   </widget>
  </widget>
