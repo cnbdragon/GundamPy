@@ -27,10 +27,11 @@ class PhysicWidget(PyGlassWidget):
         self.plieBtn.clicked.connect(self._handlePlie)
         self.armBtn.clicked.connect(self._handleArms)
         self.plieBox.addItem("first Plie")
+        self.plieBox.addItem("half Plie in first")
         self.plieBox.addItem("second Plie")
         self.plieBox.addItem("parallel Plie")
         self.plieBox.addItem("fifth Plie")
-        self.plies = ["first","second","parallel","fifth"]
+        self.plies = ["first","half","second","parallel","fifth"]
         self.arms = ["first","second","fifth"]
         self.jumpBtn.clicked.connect(self._handleJump)
 
