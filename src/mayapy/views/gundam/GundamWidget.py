@@ -53,6 +53,10 @@ class GundamWidget(PyGlassWidget):
             self.materialList2.addItem(x)
             self.materialList3.addItem(x)
 
+        self.materialList1.setCurrentIndex(1)
+        self.materialList2.setCurrentIndex(2)
+        self.materialList3.setCurrentIndex(3)
+
 #___________________________________________________________________________________________________ _activateWidgetDisplayImpl
     def _activateWidgetDisplayImpl(self, **kwargs):
         cbCount = self.materialList1.count()

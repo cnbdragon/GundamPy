@@ -17,6 +17,8 @@ import head_strike_v1 as head
 class Gundam:
     def __init__(self, name, c1=None, c2=None, c3=None):
         self.name = name
+        self.currentFeet = "parallel"
+        self.currentArms = "straight"
         self.color1 = c1
         self.color2 = c2
         self.color3 = c3
@@ -70,7 +72,12 @@ class Gundam:
 
         self.torso = torso.Torso('torso')
         mc.select(self.torso.j_root)
+        mc.select(self.torso.j_bind_root, add=True)
         mc.move(0,107,0)
+        mc.select(self.torso.j_bind_neck)
+        mc.select(self.torso.h_hips, add=True)
+        mc.select(self.torso.h_shoulders, add=True)
+        mc.move(0,107,0, r=True)
 
         self.head = head.Head(name)
         mc.select(self.head.head)
@@ -107,6 +114,11 @@ class Gundam:
 
         mc.parent(self.leftArm.ik_wrist[0], self.j_root)
         mc.parent(self.rightArm.ik_wrist[0], self.j_root)
+
+        mc.parent(self.torso.ik_spine[0], self.j_root)
+        mc.parent(self.torso.j_bind_root, self.j_root)
+        mc.parent(self.torso.j_bind_neck, self.j_root)
+        #mc.parent(self.rightArm.ik_wrist[0], self.j_root)
         pass
 
     def attachIKToRoot(self):
@@ -114,6 +126,8 @@ class Gundam:
         mc.parent(self.rightLeg.h_foot, self.j_root)
         mc.parent(self.leftArm.h_hand, self.j_root)
         mc.parent(self.rightArm.h_hand, self.j_root)
+        mc.parent(self.torso.h_shoulders, self.j_root)
+        mc.parent(self.torso.h_hips, self.j_root)
         pass
 
     def detachIKFromRoot(self):
