@@ -40,13 +40,15 @@ class PhysicWidget(PyGlassWidget):
         global gundams_need
         start = self.startTimeBox_2.value()
         end = self.endTimeBox_2.value()
-        jus = BigJump("jump",start,end,gundams_need[0][0],10,3,2)
-        jus2 = BigJump("jump",start,end,gundams_need[1][0],10,3,2)
+        for i in range(len(gundams_need)):
+            jus = BigJump("jump",start,end,gundams_need[i][0],10,3,2)
+            #jus2 = BigJump("jump",start,end,gundams_need[1][0],10,3,2)
     def _handleArms(self):
         global gundams_need
         ind = self.armBox.currentIndex()
-        arms1 = ArmsIK(self.arms[ind],gundams_need[0][0])
-        arms1 = ArmsIK(self.arms[ind],gundams_need[1][0])
+        for i in range(len(gundams_need)):
+            arms1 = ArmsIK(self.arms[ind],gundams_need[i][0])
+        #arms1 = ArmsIK(self.arms[ind],gundams_need[1][0])
 #===================================================================================================
 #                                                                                 H A N D L E R S
     def _handlePlie(self):
@@ -55,9 +57,9 @@ class PhysicWidget(PyGlassWidget):
         endTime = self.endTimeBox.value()
         idx = self.plieBox.currentIndex()
         print gundams_need
-
-        plie1 = PlieIk(self.plies[idx],startTime,endTime,gundams_need[0][0])
-        plie2 = PlieIk(self.plies[idx],startTime,endTime,gundams_need[1][0])
+        for i in range(len(gundams_need)):
+            #plie1 = PlieIk(self.plies[idx],startTime,endTime,gundams_need[0][0])
+            plie2 = PlieIk(self.plies[idx],startTime,endTime,gundams_need[i][0])
 
 #===================================================================================================
 #                                                                                 H A N D L E R S
