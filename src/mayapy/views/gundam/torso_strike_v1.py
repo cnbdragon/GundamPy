@@ -11,17 +11,23 @@ from gundam_enums import Side
 
 
 class Torso():
-    def __init__(self, name, c1=None, c2=None, c3=None):
+    def __init__(self, name, c1=None, c2=None, c3=None, c4=None, c5=None):
         self.name = name
         self.color1 = c1
         self.color2 = c2
         self.color3 = c3
+        self.color4 = c4
+        self.color5 = c5
         if self.color1 is None:
             self.color1 = 'initialShadingGroup'
         if self.color2 is None:
             self.color2 = 'initialShadingGroup'
         if self.color3 is None:
             self.color3 = 'initialShadingGroup'
+        if self.color4 is None:
+            self.color4 = 'initialShadingGroup'
+        if self.color5 is None:
+            self.color5 = 'initialShadingGroup'
         #self.side = side
         #self.foot = Foot(name, side)
 
@@ -256,8 +262,139 @@ class Torso():
         mc.select(self.chest1+'.e[2]')
         mc.move(0,0,-20,r=True)
 
+        self.chest2 = mc.polyCube(w=10,d=2,h=10)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(0,57,23, r=True)
+        mc.select(self.chest2+'.e[0]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest2+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest2+'.e[2]')
+        mc.move(0,0,-20,r=True)
 
-        self.chest = self.chest1
+        self.chest3 = mc.polyCube(w=20,d=2,h=10)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(15,57,23, r=True)
+        mc.select(self.chest3+'.e[0]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest3+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest3+'.e[2]')
+        mc.move(0,0,-20,r=True)
+        mc.select(self.chest3+'.e[5]')
+        mc.move(0,0,-5,r=True)
+
+        self.chest4 = mc.polyCube(w=20,d=2,h=10)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(-15,57,23, r=True)
+        mc.select(self.chest4+'.e[0]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest4+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest4+'.e[2]')
+        mc.move(0,0,-20,r=True)
+        mc.select(self.chest4+'.e[4]')
+        mc.move(0,0,-5,r=True)
+
+        self.chest5 = mc.polyCube(w=10,d=2,h=5)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(0,67,13, r=True)
+        mc.select(self.chest5+'.e[0]')
+        mc.move(0,-2.5,10,r=True)
+        mc.select(self.chest5+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest5+'.e[2]')
+        mc.move(0,0,-20,r=True)
+        mc.select(self.chest5+'.f[1]')
+        #mc.move(0,0,-20,r=True)
+        mc.scale(.5,1,.5)
+
+        self.chest6 = mc.polyCube(w=20,d=2,h=5)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(15,64.5,13, r=True)
+        mc.select(self.chest6+'.e[0]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest6+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest6+'.e[2]')
+        mc.move(0,0,-20,r=True)
+        mc.select(self.chest6+'.e[5]')
+        mc.move(0,0,-5,r=True)
+        mc.select(self.chest6+'.e[1]')
+        mc.move(0,0,-10,r=True)
+
+        self.chest7 = mc.polyCube(w=20,d=2,h=5)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(-15,64.5,13, r=True)
+        mc.select(self.chest7+'.e[0]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest7+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest7+'.e[2]')
+        mc.move(0,0,-20,r=True)
+        mc.select(self.chest7+'.e[4]')
+        mc.move(0,0,-5,r=True)
+        mc.select(self.chest7+'.e[1]')
+        mc.move(0,0,-10,r=True)
+
+        self.chest8 = mc.polyCube(w=10,d=2,h=5)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(10,67.5,3, r=True)
+        mc.select(self.chest8+'.e[0]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest8+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest8+'.e[2]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest8+'.e[5]')
+        mc.move(0,0,-5,r=True)
+        mc.select(self.chest8+'.e[1]')
+        mc.move(0,0,-1,r=True)
+
+        self.chest9 = mc.polyCube(w=10,d=2,h=5)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(-10,67.5,3, r=True)
+        mc.select(self.chest9+'.e[0]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest9+'.e[3]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest9+'.e[2]')
+        mc.move(0,0,-10,r=True)
+        mc.select(self.chest9+'.e[4]')
+        mc.move(0,0,-5,r=True)
+        mc.select(self.chest9+'.e[1]')
+        mc.move(0,0,-1,r=True)
+
+
+
+        self.chest = mc.polyUnite(self.chest1,
+                                  self.chest2,
+                                  self.chest3,
+                                  self.chest4,
+                                  self.chest5,
+                                  self.chest6,
+                                  self.chest7,
+                                  self.chest8,
+                                  self.chest9)
+
+
+        ######### shoulders ############
+        t1 = mc.polyCube(sx=3,sy=3,sz=3,w=15, h=15, d=15, n='l_shoulder')[0]
+        mc.sets(e=True, forceElement = self.color4)
+        t1r = mc.polyBevel(ws=1, oaf=1, o=.5,sa=30 )[0]
+        #mc.scale(1,5,1)
+        mc.move(25,67,0,r=True)
+
+        t2 = mc.polyCube(sx=3,sy=3,sz=3,w=15, h=15, d=15, n='r_shoulder')[0]
+        mc.sets(e=True, forceElement = self.color4)
+        t2r = mc.polyBevel(ws=1, oaf=1, o=.5,sa=30 )[0]
+        #mc.scale(1,5,1)
+        mc.move(-25,67,0,r=True)
+
+        self.clavical = mc.polyUnite(self.clavical,
+                                     t1,t2)
+
+
 
     def _createJoints(self, name):
         #bone
