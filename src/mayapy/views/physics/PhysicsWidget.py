@@ -7,7 +7,7 @@ from mayapy.views.gundam.gundam_skeleton_v1 import Skeleton
 from physicPlie2 import typeOfPlie,Plies
 from PhysicPlieIk import PlieIk,moveFeetFirst,moveFeetFifth
 from mayapy.views.gundam.GundamWidget import GundamWidget,gundams_need
-from PhysicArmIK import ArmsIk
+from PhysicArmIK import ArmsIK
 from enum import Enum
 print gundams_need
 
@@ -35,7 +35,7 @@ class PhysicWidget(PyGlassWidget):
     def _handleArms(self):
         global gundams_need
         ind = self.armBox.currentIndex()
-        arms1 = ArmsIk(self.arms[ind],gundams_need[0][0])
+        arms1 = ArmsIK(self.arms[ind],gundams_need[0][0])
 #===================================================================================================
 #                                                                                 H A N D L E R S
     def _handlePlie(self):
