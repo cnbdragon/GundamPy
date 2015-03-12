@@ -8,6 +8,7 @@ from physicPlie2 import typeOfPlie,Plies
 from PhysicPlieIk import PlieIk,moveFeetFirst,moveFeetFifth
 from mayapy.views.gundam.GundamWidget import GundamWidget,gundams_need
 from PhysicArmIK import ArmsIK
+from PhysicJump import BigJump
 from enum import Enum
 print gundams_need
 
@@ -29,8 +30,15 @@ class PhysicWidget(PyGlassWidget):
         self.plieBox.addItem("second Plie")
         self.plieBox.addItem("parallel Plie")
         self.plieBox.addItem("fifth Plie")
-        self.plies = ["first","second","parallel","fifth"]
+        self.plies = ["half","second","parallel","fifth"]
         self.arms = ["first","second","fifth"]
+        self.jumpBtn.clicked.connect(self._handleJump)
+
+    def _handleJump(self):
+        global gundams_need
+        start = self.startTimeBox_2.value()
+        end = self.endTimeBox_2.value()
+        jus = BigJump("jump",start,end,gundams_need[0][0],10,3,2)
 
     def _handleArms(self):
         global gundams_need
