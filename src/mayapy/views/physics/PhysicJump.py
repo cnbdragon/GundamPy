@@ -71,7 +71,7 @@ class  BigJump():
         mc.setKeyframe(self.gundamIns.torso.h_hips,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand,t = self.end/2+2)
         mc.select(self.gundamIns.rightLeg.h_foot)
         mc.rotate(0,-70,0)
-        mc.move(-8,-50,12)
+        mc.move(-8,-50,80,r=True)
         mc.select(cl=True)
         mc.select(self.gundamIns.torso.h_hips,self.gundamIns.leftArm.h_hand,self.gundamIns.rightArm.h_hand)
         mc.move(0,-97,0, r= True)
