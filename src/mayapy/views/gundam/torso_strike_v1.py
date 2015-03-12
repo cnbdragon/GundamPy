@@ -52,7 +52,75 @@ class Torso():
 
         #self.hip = mc.polySphere(r=5,n=name+'_hip')
         self.hipPlate = mc.polyCube(w=50,d=10,h=5)
-        mc.move(0,10,0)
+        mc.move(0,15,0)
+
+        self.hipPlate2 = mc.polyCube(w=8,d=5,h=35)[0]
+        mc.move(12,0,15)
+        mc.select(self.hipPlate2+'.e[10]')
+        mc.move(0,3,0,r=True)
+        mc.select(self.hipPlate2+'.e[0]')
+        mc.move(0,3,0,r=True)
+        mc.select(self.hipPlate2+'.e[6]')
+        mc.move(0,-3,0,r=True)
+        mc.select(self.hipPlate2+'.e[1]')
+        mc.move(0,-3,0,r=True)
+        mc.select(self.hipPlate2+'.e[4]')
+        mc.move(3,0,0,r=True)
+        mc.select(self.hipPlate2)
+        mc.rotate(-10,0,0)
+
+        self.hipPlate3 = mc.polyCube(w=15,d=5,h=35)[0]
+        mc.move(23.5 ,0,15)
+        mc.select(self.hipPlate3+'.e[11]')
+        mc.move(0,10,0,r=True)
+        mc.select(self.hipPlate3+'.e[0]')
+        mc.move(0,3,0,r=True)
+        mc.select(self.hipPlate3+'.e[7]')
+        mc.move(-6,-3,0,r=True)
+        mc.select(self.hipPlate3+'.e[1]')
+        mc.move(0,-3,0,r=True)
+        mc.select(self.hipPlate3+'.e[5]')
+        mc.move(-3,0,0,r=True)
+        mc.select(self.hipPlate3)
+        mc.rotate(-10,0,0)
+
+
+        self.hipPlate4 = mc.polyCube(w=8,d=5,h=35)[0]
+        mc.move(-12,0,15)
+        mc.select(self.hipPlate4+'.e[11]')
+        mc.move(0,3,0,r=True)
+        mc.select(self.hipPlate4+'.e[0]')
+        mc.move(0,3,0,r=True)
+        mc.select(self.hipPlate4+'.e[7]')
+        mc.move(0,-3,0,r=True)
+        mc.select(self.hipPlate4+'.e[1]')
+        mc.move(0,-3,0,r=True)
+        mc.select(self.hipPlate4+'.e[5]')
+        mc.move(-3,0,0,r=True)
+        mc.select(self.hipPlate4)
+        mc.rotate(-10,0,0)
+
+        self.hipPlate5 = mc.polyCube(w=15,d=5,h=35)[0]
+        mc.move(-23.5 ,0,15)
+        mc.select(self.hipPlate5+'.e[10]')
+        mc.move(0,10,0,r=True)
+        mc.select(self.hipPlate5+'.e[0]')
+        mc.move(0,3,0,r=True)
+        mc.select(self.hipPlate5+'.e[6]')
+        mc.move(6,-3,0,r=True)
+        mc.select(self.hipPlate5+'.e[1]')
+        mc.move(0,-3,0,r=True)
+        mc.select(self.hipPlate5+'.e[4]')
+        mc.move(3,0,0,r=True)
+        mc.select(self.hipPlate5)
+        mc.rotate(-10,0,0)
+
+        self.hipPlate = mc.polyUnite(self.hipPlate,
+                                     self.hipPlate2,
+                                     self.hipPlate3,
+                                     self.hipPlate4,
+                                     self.hipPlate5)
+
 
         self.crotchPlate1 = mc.polyCube(w=10,d=20,h=20)[0]
         mc.select(self.crotchPlate1+'.e[3]')

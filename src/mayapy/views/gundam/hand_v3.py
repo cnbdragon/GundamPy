@@ -114,6 +114,10 @@ class Hand():
 
 
     def setBallet(self):
+        if self.side == Side.right:
+            self.sideMult = 1
+        else:
+            self.sideMult = -1
         mc.select(self.index.j_n_1)
         mc.rotate(1,0,0,r=True)
         mc.select(self.index.j_n_2)
@@ -144,7 +148,7 @@ class Hand():
 
 
         mc.select(self.thumb.j_thumb_1)
-        mc.rotate(-50,-60,70, r=True)
+        mc.rotate(-50,self.sideMult*-60,self.sideMult*70, r=True)
 
 
         pass

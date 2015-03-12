@@ -108,6 +108,8 @@ class Gundam:
         self.parentIKToRoot()
 
         #print self.leftArm.h_hand
+        self.leftArm.hand.setBallet()
+        self.rightArm.hand.setBallet()
 
     def parentIKToRoot(self):
         mc.parent(self.rightLeg.ik_ankle[0], self.j_root)
