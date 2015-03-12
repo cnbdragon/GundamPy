@@ -11,19 +11,25 @@ from gundam_enums import Side
 
 
 class Leg():
-    def __init__(self, name, side,c1=None,c2=None,c3=None):
+    def __init__(self, name, side, c1=None, c2=None, c3=None, c4=None, c5=None):
         self.name = name
         self.side = side
 
         self.color1 = c1
         self.color2 = c2
         self.color3 = c3
+        self.color4 = c4
+        self.color5 = c5
         if self.color1 is None:
             self.color1 = 'initialShadingGroup'
         if self.color2 is None:
             self.color2 = 'initialShadingGroup'
         if self.color3 is None:
             self.color3 = 'initialShadingGroup'
+        if self.color4 is None:
+            self.color4 = 'initialShadingGroup'
+        if self.color5 is None:
+            self.color5 = 'initialShadingGroup'
 
         self.foot = Foot(name, side,c1,c2,c3)
 
@@ -102,7 +108,7 @@ class Leg():
         c3 = mc.polyBoolOp(p3,p6, op=2)[0]
         claf1 = mc.polyUnite(c1,c2,c3)
         mc.sets(e=True, forceElement = self.color1)
-        mc.move(0,40,-10)
+        mc.move(0,45,-10)
 
         self.tibia = mc.polyUnite(self.tibia, claf1)
 
@@ -111,7 +117,14 @@ class Leg():
         mc.scale(1,5,1)
         mc.move(0,75,-12,r=True)
 
-        self.femur = mc.polyUnite(self.femur, t1)
+        t3 = mc.polyCube(sx=3,sy=3,sz=3,w=10, h=15, d=10, n='thight_armor')[0]
+        mc.sets(e=True, forceElement = self.color1)
+        t3r = mc.polyBevel(ws=1, oaf=1, o=.5,sa=30 )[0]
+        mc.scale(1.75,3,1.4 )
+
+        mc.move(0,90,-9,r=True)
+
+        self.femur = mc.polyUnite(self.femur, t1,t3)
 
 
 

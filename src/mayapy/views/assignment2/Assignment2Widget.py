@@ -41,7 +41,8 @@ listOfMaterialShader=['none',
                       materials.shinyGoldSG,
                       materials.silverSG,
                       materials.swordSG]
-
+listOfMaterials = []
+'''
 listOfMaterials = [   materials.redAnodizedAluminum(),
                       materials.blueAnodizedAluminum(),
                       materials.redFineMettalic(),
@@ -54,7 +55,7 @@ listOfMaterials = [   materials.redAnodizedAluminum(),
                       materials.gold(),
                       materials.shinyGold(),
                       materials.silver()]
-
+'''
 #print listOfMaterialShader[1]
 # listOfMaterials[1]
 # print materials.goldSG
@@ -108,7 +109,7 @@ class Assignment2Widget(PyGlassWidget):
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleInit(self):
         floor = mc.polyPlane(w=300,h=300)
-        mc.move(0,-5,0)
+        mc.move(0,-2,0)
 
         mc.ambientLight()
         mc.pointLight()
