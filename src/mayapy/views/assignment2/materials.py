@@ -5,7 +5,6 @@ from nimble import cmds as mc
 from nimble import cmds as cmds
 from nimble import cmds as cmd
 
-
 redAASG = None
 blueAASG = None
 redFMSG = None
@@ -15,7 +14,6 @@ greyCPlasticSG = None
 blueCPlasticSG = None
 chromeSG = None
 npchromeSG = None
-global goldSG
 goldSG = None
 shinyGoldSG = None
 silverSG = None

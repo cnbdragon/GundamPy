@@ -11,10 +11,47 @@ from pyglass.widgets.PyGlassWidget import PyGlassWidget
 import materials
 global listOfMaterials
 global listOfMaterialShader
+materials.redAnodizedAluminum()
+materials.blueAnodizedAluminum()
+materials.redFineMettalic()
+materials.blueFineMetallic()
+materials.clearPlastic()
+materials.greyClearPlastic()
+materials.blueClearPlastic()
+materials.chrome()
+materials.npchrome()
 materials.gold()
-listOfMaterialShader=[materials.blueCPlasticSG,materials.goldSG]
-listOfMaterials = [materials.blueClearPlastic(),materials.gold()]
-print listOfMaterialShader[1]
+materials.shinyGold()
+materials.silver()
+
+listOfMaterialShader=['none',
+                      materials.redAASG,
+                      materials.blueAASG,
+                      materials.redFMSG,
+                      materials.blueFMSG,
+                      materials.cPlasticSG,
+                      materials.greyCPlasticSG,
+                      materials.blueCPlasticSG,
+                      materials.chromeSG,
+                      materials.npchromeSG,
+                      materials.goldSG,
+                      materials.shinyGoldSG,
+                      materials.silverSG]
+
+listOfMaterials = [   materials.redAnodizedAluminum(),
+                      materials.blueAnodizedAluminum(),
+                      materials.redFineMettalic(),
+                      materials.blueFineMetallic(),
+                      materials.clearPlastic(),
+                      materials.greyClearPlastic(),
+                      materials.blueClearPlastic(),
+                      materials.chrome(),
+                      materials.npchrome(),
+                      materials.gold(),
+                      materials.shinyGold(),
+                      materials.silver()]
+
+#print listOfMaterialShader[1]
 # listOfMaterials[1]
 # print materials.goldSG
 # materials.gold()
@@ -55,6 +92,8 @@ class Assignment2Widget(PyGlassWidget):
 
 
 
+
+
 #===================================================================================================
 #                                                                                 H A N D L E R S
 
@@ -91,17 +130,19 @@ class Assignment2Widget(PyGlassWidget):
 
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleCustomAA(self):
-
+        name = self.customName.text()
         r = self.redSpin.value()
         g = self.greenSpin.value()
         b = self.blueSpin.value()
 
-        custAA = materials.anodizedAluminum('cust',r,g,b)
+        custAA = materials.anodizedAluminum(name+'_cust',r,g,b)
 
-        Sphere = mc.polySphere(r=5,n='custAASphere')[0]
+        Sphere = mc.polySphere(r=5,n=name+'_custAASphere')[0]
         mc.select(cl=True)
         mc.select(Sphere)
         mc.sets(e=True, forceElement = custAA.AASG)
+        listOfMaterialShader.append(custAA.AASG)
+
 
 
 #___________________________________________________________________________________________________ _handleReturnHome

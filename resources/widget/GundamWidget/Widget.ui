@@ -69,8 +69,8 @@
     <rect>
      <x>0</x>
      <y>40</y>
-     <width>313</width>
-     <height>541</height>
+     <width>220</width>
+     <height>520</height>
     </rect>
    </property>
    <property name="title">
@@ -91,6 +91,9 @@
     </item>
     <item>
      <widget class="QPushButton" name="strikeDefaultBtn">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="font">
        <font>
         <family>Helvetica</family>
@@ -115,7 +118,7 @@
     <item>
      <widget class="QLineEdit" name="maleName">
       <property name="text">
-       <string/>
+       <string>test</string>
       </property>
      </widget>
     </item>
@@ -128,7 +131,7 @@
        <item>
         <widget class="QLineEdit" name="maleSize">
          <property name="text">
-          <string>20</string>
+          <string>2</string>
          </property>
         </widget>
        </item>
@@ -147,28 +150,19 @@
       <property name="title">
        <string>Textures</string>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QWidget" name="widget" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QComboBox" name="materialList1"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="label">
             <property name="text">
-             <string>Color 1</string>
+             <string>Primary</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox"/>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_2"/>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_3"/>
+           <widget class="QComboBox" name="materialList1"/>
           </item>
          </layout>
         </widget>
@@ -177,23 +171,14 @@
         <widget class="QWidget" name="widget_2" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QComboBox" name="comboBox_2"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Color 2</string>
+             <string>Secondary</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_4"/>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_5"/>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_6"/>
+           <widget class="QComboBox" name="materialList2"/>
           </item>
          </layout>
         </widget>
@@ -202,23 +187,14 @@
         <widget class="QWidget" name="widget_3" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QComboBox" name="comboBox_3"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Color 3</string>
+             <string>Tertiary</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_7"/>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_8"/>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_9"/>
+           <widget class="QComboBox" name="materialList3"/>
           </item>
          </layout>
         </widget>
@@ -349,6 +325,31 @@
      <widget class="QComboBox" name="gundamList"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>150</y>
+     <width>401</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="plainText">
+    <string>The Build Default button does not work 
+
+select a model from the drop down
+
+name the model (each model in the scene needs a unique name)
+
+select the size of the model
+
+select the primary, secondary and tertiary colors of the model. (Not working yet) Defaults will be used if none are selected.
+
+press Build custom.
+
+(use of IK Parenting attaches and detaches the handels from the root node, this is for expereminteng with the model and not for animation)</string>
+   </property>
   </widget>
  </widget>
  <resources/>

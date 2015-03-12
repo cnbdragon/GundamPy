@@ -48,11 +48,29 @@ class GundamWidget(PyGlassWidget):
             x = listOfMaterialShader[i]
             if x == None:
                 listOfMaterials[i] # this works
-            listOfMaterials.__repr__()
-            listOfMaterialShader.__repr__()
-
-            print listOfMaterialShader[i]
+            #print listOfMaterialShader[i]
             self.materialList1.addItem(x)
+            self.materialList2.addItem(x)
+            self.materialList3.addItem(x)
+
+#___________________________________________________________________________________________________ _activateWidgetDisplayImpl
+    def _activateWidgetDisplayImpl(self, **kwargs):
+        cbCount = self.materialList1.count()
+        mlCount = len(listOfMaterialShader)
+        '''
+        print cbCount
+        print mlCount
+        for i in range(len(listOfMaterialShader)):
+            print listOfMaterialShader[i]
+        '''
+        if cbCount != mlCount:
+            print "update matelial list"
+            for idx in range(cbCount,mlCount):
+                x = listOfMaterialShader[idx]
+                self.materialList1.addItem(x)
+                self.materialList2.addItem(x)
+                self.materialList3.addItem(x)
+        pass
 
 #===================================================================================================
 #                                                                                 H A N D L E R S
@@ -89,7 +107,7 @@ class GundamWidget(PyGlassWidget):
         self.gundamList.addItem(gundam.name)
         gundam.attachIKToRoot()
         size = int(self.maleSize.text())
-        ratio = size / 20.0
+        ratio = size / 2.0
         print(ratio)
         gundam.scale(ratio)
         print self.gundams

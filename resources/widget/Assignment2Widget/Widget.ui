@@ -384,7 +384,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QLineEdit" name="customeName">
+   <widget class="QLineEdit" name="customName">
     <property name="geometry">
      <rect>
       <x>50</x>
