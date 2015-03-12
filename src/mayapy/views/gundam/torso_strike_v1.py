@@ -11,8 +11,17 @@ from gundam_enums import Side
 
 
 class Torso():
-    def __init__(self, name):
+    def __init__(self, name, c1=None, c2=None, c3=None):
         self.name = name
+        self.color1 = c1
+        self.color2 = c2
+        self.color3 = c3
+        if self.color1 is None:
+            self.color1 = 'initialShadingGroup'
+        if self.color2 is None:
+            self.color2 = 'initialShadingGroup'
+        if self.color3 is None:
+            self.color3 = 'initialShadingGroup'
         #self.side = side
         #self.foot = Foot(name, side)
 
@@ -26,29 +35,9 @@ class Torso():
         pass
 
     def _createGeometry(self, name):
-        '''
-        #create tibia
-        self.tibia = mc.polyCube(sx=1, sy=1, sz=1, w=2,h=50, d=2, n=name+'_tibia')[0]
-        mc.move(0,28,-12)
 
-        self.knee = mc.polyCylinder(h=5,r=2,n=name+'_knee')[0]
-        mc.move(0,54,-12,r=True)
-        mc.rotate(0,0,'90deg')
-        self.tibia = mc.polyUnite(self.tibia,self.knee, n=name+'_tibia')[0]
-        mc.move(0,54,-12, self.tibia+".scalePivot", self.tibia+".rotatePivot")
-
-        #create feamer
-        self.femur = mc.polyCube(sx=1, sy=1, sz=1, w=3,h=50, d=3, n=name+'_feamer')[0]
-        mc.move(0,80,-12)
-        self.hip = mc.polySphere(r=5,n=name+'_hip')
-        mc.move(0,107,-12)
-        self.femur = mc.polyUnite(self.femur,self.hip, n=name+'_femur')[0]
-        mc.move(0,107,-12, self.femur+".scalePivot", self.femur+".rotatePivot")
-        pass
-        '''
-
-        self.spine = mc.polyCylinder(h=75,r=2,n=name+'_spine')[0]
-        mc.move(0,30,0)
+        #self.spine = mc.polyCylinder(h=75,r=2,n=name+'_spine')[0]
+        #mc.move(0,30,0)
         self.pelvic = mc.polyCylinder(h=40,r=2,n=name+'_pelvic')[0]
         mc.rotate(0,0,'90deg')
         self.clavical = mc.polyCylinder(h=56,r=2,n=name+'_clavical')[0]
@@ -56,9 +45,219 @@ class Torso():
         mc.move(0,67,0)
 
         #self.hip = mc.polySphere(r=5,n=name+'_hip')
+        self.hipPlate = mc.polyCube(w=50,d=10,h=5)
+        mc.move(0,10,0)
 
-        self.torso = mc.polyUnite(self.spine,self.pelvic,n=name)[0]
+        self.crotchPlate1 = mc.polyCube(w=10,d=20,h=20)[0]
+        mc.select(self.crotchPlate1+'.e[3]')
+        mc.move(0,2,0,r=True)
+        mc.scale(.75,1,1)
+        self.crotchPlate2 = mc.polyCube(w=10,d=10,h=20)[0]
+        mc.move(0,0,15)
+        mc.select(self.crotchPlate2+'.e[0]')
+        mc.move(0,2,-5,r=True)
+        mc.scale(.75,1,1)
 
+        mc.select(self.crotchPlate2)
+        self.crotchPlate1_1 = mc.duplicate(rr=True)
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(0,2,-3, r=True)
+        mc.scale(1.5,1 ,1)
+
+        self.crotchPlate3 = mc.polyCube(w=10,d=20,h=10)[0]
+        mc.move(0,15,10)
+        mc.select(self.crotchPlate3+'.e[1]')
+        mc.move(0,0,-6, r=True)
+        mc.scale(.75,1,1)
+
+        mc.select(self.crotchPlate3)
+        self.crotchPlate3_1 = mc.duplicate(rr=True)
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(0,2,-3,r=True)
+        mc.scale(1.5,1,1)
+
+        mc.select(self.crotchPlate3)
+        self.crotchPlate3_2 = mc.duplicate(rr=True)
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(0,0,1,r=True)
+        mc.scale(.75,.75,1)
+
+
+        #self.crotchPlate4 = mc.polyCube(w=10,d=20,h=10)[0]
+        #mc.move(0,-15,0)
+        self.pelvic = mc.polyUnite(self.pelvic, self.crotchPlate2,self.crotchPlate3,self.crotchPlate1_1,self.crotchPlate3_1,self.crotchPlate3_2)
+        self.pelvic = mc.polyUnite(self.pelvic, self.crotchPlate1)
+        self.pelvic = mc.polyUnite(self.pelvic, self.hipPlate)[0]
+
+        #self.torso = mc.polyUnite(self.spine,self.pelvic,n=name)[0]
+        self.torso = self.pelvic
+
+
+
+        ######### Cockpit ##############
+
+        self.cockpit = mc.polyCube(w=10,d=2,h=10)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,25,8, r=True)
+        mc.select(self.cockpit+'.e[1]')
+        mc.move(0,5,5,r=True)
+
+        self.cockpit2 = mc.polyCube(w=10,d=2,h=10)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,35,10, r=True)
+        mc.select(self.cockpit2+'.e[1]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.cockpit2+'.e[2]')
+        mc.move(0,2,10,r=True)
+        self.cockpit = mc.polyUnite(self.cockpit, self.cockpit2)
+
+        self.cockpitWall1 = mc.polyCube(w=2, h=30, d=10)[0]
+        mc.move(0,25,0,r=True)
+        mc.select(self.cockpitWall1+'.e[1]')
+        mc.move(0,0,15,r=True)
+
+        self.cockpitWall2 = mc.polyCube(w=2, h=20, d=20)[0]
+        mc.move(6.5,32,0,r=True)
+        mc.select(self.cockpitWall2+'.e[1]')
+        mc.move(0,0,15,r=True)
+
+        self.cockpitWall3 = mc.polyCube(w=2, h=20, d=20)[0]
+        mc.move(-6.5,32,0,r=True)
+        mc.select(self.cockpitWall3+'.e[1]')
+        mc.move(0,0,15,r=True)
+
+        self.cockpitWall4 = mc.polyCube(w=2, h=20, d=20)[0]
+        mc.move(6.5,52,0,r=True)
+        mc.select(self.cockpitWall4+'.e[0]')
+        mc.move(0,0,15,r=True)
+
+        self.cockpitWall5 = mc.polyCube(w=2, h=20, d=20)[0]
+        mc.move(-6.5,52,0,r=True)
+        mc.select(self.cockpitWall5+'.e[0]')
+        mc.move(0,0,15,r=True)
+
+        self.cockpitWall6 = mc.polyCube(w=15,h=20, d=2)
+        mc.move(0,32,-10,r=True)
+        self.cockpitWall7 = mc.polyCube(w=15,h=20, d=2)
+        mc.move(0,52,-10,r=True)
+
+        self.cockpit = mc.polyUnite(self.cockpit, self.cockpitWall1,self.cockpitWall2,
+                                    self.cockpitWall3,self.cockpitWall4,self.cockpitWall5,
+                                    self.cockpitWall6,self.cockpitWall7)
+
+        self.lRibs1 = mc.polyCube(w=10,d=20,h=5)[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(12,25,0,r=True)
+        mc.select(self.lRibs1+'.e[1]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.lRibs1+'.e[2]')
+        mc.move(0,0,2,r=True)
+        mc.select(self.lRibs1+'.e[7]')
+        mc.move(-2,1,0,r=True)
+        mc.polyBevel()
+
+        self.lRibs2 = mc.polyCube(w=5,d=15,h=5)[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(12,30,0,r=True)
+        mc.select(self.lRibs2+'.e[1]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.lRibs2+'.e[2]')
+        mc.move(0,0,2,r=True)
+        mc.select(self.lRibs2+'.e[7]')
+        mc.move(-2,1,0,r=True)
+        mc.polyBevel()
+
+        self.lRibs3 = mc.polyCube(w=2,d=20,h=10)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(8,30,0,r=True)
+        mc.select(self.lRibs3+'.e[1]')
+        mc.move(0,0,2,r=True)
+        mc.select(self.lRibs3+'.e[2]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.lRibs3+'.e[7]')
+        mc.move(2,1,0,r=True)
+        mc.polyBevel()
+
+        self.lRibs4 = mc.polyCube(w=8,d=30,h=10)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(8,40,0,r=True)
+        mc.select(self.lRibs4+'.e[1]')
+        mc.move(0,0,5,r=True)
+        mc.select(self.lRibs4+'.e[2]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.lRibs4+'.e[7]')
+        mc.move(5,1,0,r=True)
+        mc.polyBevel()
+
+        self.lRibs = mc.polyUnite(self.lRibs1,
+                                  self.lRibs2,
+                                  self.lRibs3,
+                                  self.lRibs4)
+
+        self.rRibs1 = mc.polyCube(w=10,d=20,h=5)[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(-12,25,0,r=True)
+        mc.select(self.rRibs1+'.e[1]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.rRibs1+'.e[2]')
+        mc.move(0,0,2,r=True)
+        mc.select(self.rRibs1+'.e[6]')
+        mc.move(2,1,0,r=True)
+        mc.polyBevel()
+
+        self.rRibs2 = mc.polyCube(w=5,d=15,h=5)[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(-12,30,0,r=True)
+        mc.select(self.rRibs2+'.e[1]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.rRibs2+'.e[2]')
+        mc.move(0,0,2,r=True)
+        mc.select(self.rRibs2+'.e[6]')
+        mc.move(2,1,0,r=True)
+        mc.polyBevel()
+
+        self.rRibs3 = mc.polyCube(w=2,d=20,h=10)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(-8,30,0,r=True)
+        mc.select(self.rRibs3+'.e[1]')
+        mc.move(0,0,2,r=True)
+        mc.select(self.rRibs3+'.e[2]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.rRibs3+'.e[6]')
+        mc.move(-2,1,0,r=True)
+        mc.polyBevel()
+
+        self.rRibs4 = mc.polyCube(w=8,d=30,h=10)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(-8,40,0,r=True)
+        mc.select(self.rRibs4+'.e[1]')
+        mc.move(0,0,5,r=True)
+        mc.select(self.rRibs4+'.e[2]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.rRibs4+'.e[6]')
+        mc.move(-5,1,0,r=True)
+        mc.polyBevel()
+
+        self.rRibs = mc.polyUnite(self.rRibs1,
+                                  self.rRibs2,
+                                  self.rRibs3,
+                                  self.rRibs4)
+
+        self.cockpit = mc.polyUnite(self.cockpit, self.lRibs, self.rRibs)
+        ########## CHEST #############
+
+        self.chest1 = mc.polyCube(w=10,d=2,h=10)[0]
+        mc.sets(e=True, forceElement = self.color3)
+        mc.move(0,47,23, r=True)
+        mc.select(self.chest1+'.e[1]')
+        mc.move(0,0,10,r=True)
+        mc.select(self.chest1+'.e[3]')
+        mc.move(0,2,0,r=True)
+        mc.select(self.chest1+'.e[2]')
+        mc.move(0,0,-20,r=True)
+
+
+        self.chest = self.chest1
 
     def _createJoints(self, name):
         #bone
@@ -92,6 +291,8 @@ class Torso():
 
         mc.parent(self.torso,self.j_root)
         mc.parent(self.clavical,self.j_neck)
+        mc.parent(self.cockpit, self.j_s3)
+        mc.parent(self.chest, self.j_s5)
 
         pass
 

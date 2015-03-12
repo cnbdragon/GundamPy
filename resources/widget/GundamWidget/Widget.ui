@@ -547,6 +547,19 @@ press Build custom.
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="initBtn">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>10</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Init Scene</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

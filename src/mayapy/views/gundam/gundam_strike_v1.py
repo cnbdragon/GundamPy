@@ -13,6 +13,7 @@ import leg_strike_v1 as leg
 import arms_v3 as arms
 import torso_strike_v1 as torso
 import head_strike_v1 as head
+import sword_v1 as sword
 
 class Gundam:
     def __init__(self, name, c1=None, c2=None, c3=None):
@@ -29,6 +30,8 @@ class Gundam:
         if self.color3 is None:
             self.color3 = 'initialShadingGroup'
 
+
+        #self.sword = sword.Sword(name)
 
         '''
         mc.select(cl=True)
@@ -64,13 +67,13 @@ class Gundam:
         mc.move(20,0,12, r =True)
 
         mc.select(self.rightArm.j_shoulder)
-        mc.move(-28,90,0, r=True)
+        mc.move(-35,90,0, r=True)
         mc.rotate(0,0,-90)
         mc.select(self.leftArm.j_shoulder)
-        mc.move(28,90,0, r=True)
+        mc.move(35,90,0, r=True)
         mc.rotate(0,0,90)
 
-        self.torso = torso.Torso('torso')
+        self.torso = torso.Torso('torso',self.color1,self.color2,self.color3)
         mc.select(self.torso.j_root)
         mc.select(self.torso.j_bind_root, add=True)
         mc.move(0,107,0)
@@ -80,13 +83,16 @@ class Gundam:
         mc.move(0,107,0, r=True)
 
         self.head = head.Head(name)
-        mc.select(self.head.head)
+        #mc.select(self.head.head)
+        mc.select(self.head.j_head)
         mc.move(0,189,0)
 
         mc.parent(self.rightLeg.j_hip, self.torso.j_root)
         mc.parent(self.leftLeg.j_hip, self.torso.j_root)
-        mc.parent(self.rightArm.j_shoulder, self.torso.j_neck)
-        mc.parent(self.leftArm.j_shoulder, self.torso.j_neck)
+        mc.parent(self.rightArm.j_shoulder, self.torso.j_s5)
+        mc.parent(self.leftArm.j_shoulder, self.torso.j_s5)
+
+        mc.parent(self.head.j_head, self.torso.j_neck)
         #mc.parent(self.leftArm.hand.j_wrist, self.leftArm.j_elbow)
         #mc.parent(self.rightArm.hand.j_wrist, self.rightArm.j_elbow)
 
