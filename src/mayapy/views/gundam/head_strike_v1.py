@@ -24,12 +24,12 @@ class Head():
         mc.select(cl=True)
 
         #make some joints?
-        ##self.j_root = mc.joint(p=(0,0,0), n=name+'_j_root')
-        ##self.j_neck = mc.joint(p=(0,67,0), n=name+'_j_neck')
+        self.j_head = mc.joint(p=(0,0,0), n=name+'_j_head')
+
 
         #parent some joints
-        #mc.parent(self.torso,self.j_root)
-        #mc.parent(self.clavical,self.j_neck)
+        mc.parent(self.head,self.j_head)
+
         pass
 
     def _deleteHistory(self):

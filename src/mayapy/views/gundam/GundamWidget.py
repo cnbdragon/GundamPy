@@ -11,6 +11,7 @@ from gundam_v3 import Gundam as GundamArtemie
 from mayapy.views.assignment2.Assignment2Widget import Assignment2Widget,listOfMaterialShader,listOfMaterials
 from enum import Enum
 from mayapy.views.physics.PhysicPlieIk import PlieIk
+from nimble import cmds as mc
 gundams_need = []
 #___________________________________________________________________________________________________ Assignment2Widget
 class GundamWidget(PyGlassWidget):
@@ -36,6 +37,7 @@ class GundamWidget(PyGlassWidget):
         self.detachArmsBtn.clicked.connect(self._handleDetachArmButton)
         self.attachFeetBtn.clicked.connect(self._handleAttachLegButton)
         self.detachFeetBtn.clicked.connect(self._handleDetachLegButton)
+        self.initBtn.clicked.connect(self._handleInit)
 
         #listOfMaterials.__repr__()
 
@@ -78,7 +80,14 @@ class GundamWidget(PyGlassWidget):
 
 #===================================================================================================
 #                                                                                 H A N D L E R S
+#___________________________________________________________________________________________________ _handleReturnHome
+    def _handleInit(self):
+        floor = mc.polyPlane(w=600,h=600)
+        mc.move(0,-5,0)
 
+        mc.ambientLight()
+        mc.pointLight()
+        mc.move(600,600,600)
 #___________________________________________________________________________________________________ _handleReturnHome
     def _handleReturnHome(self):
         self.mainWindow.setActiveWidget('home')

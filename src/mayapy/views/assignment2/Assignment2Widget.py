@@ -24,6 +24,7 @@ materials.npchrome()
 materials.gold()
 materials.shinyGold()
 materials.silver()
+materials.sword()
 
 listOfMaterialShader=['none',
                       materials.whiteAASG,
@@ -38,7 +39,8 @@ listOfMaterialShader=['none',
                       materials.npchromeSG,
                       materials.goldSG,
                       materials.shinyGoldSG,
-                      materials.silverSG]
+                      materials.silverSG,
+                      materials.swordSG]
 
 listOfMaterials = [   materials.redAnodizedAluminum(),
                       materials.blueAnodizedAluminum(),

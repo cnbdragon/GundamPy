@@ -18,6 +18,7 @@ npchromeSG = None
 goldSG = None
 shinyGoldSG = None
 silverSG = None
+swordSG = None
 
 def whiteAnodizedAluminum():
     ### white anodized aluminum
@@ -227,16 +228,32 @@ def shinyGold():
 def silver():
     ### silver
     global silverSG
-    chrome = mc.shadingNode('blinn',asShader=True, n='silver')
+    silver = mc.shadingNode('blinn',asShader=True, n='silver')
     silverSG = mc.sets(r=True, nss=True, em=True, n='silverSG')
-    mc.connectAttr(chrome+'.outColor',silverSG+'.surfaceShader')
-    mc.setAttr(chrome+'.color',0.0, 0.0, 0.0,type='double3')
-    mc.setAttr(chrome+'.transparency', 0.0, 0.0, 0.0, type='double3')
-    mc.setAttr(chrome+'.ambientColor', 0.0, 0.0, 0.0, type='double3')
-    mc.setAttr(chrome+'.incandescence', 0.122, 0.122, 0.122, type='double3')
+    mc.connectAttr(silver+'.outColor',silverSG+'.surfaceShader')
+    mc.setAttr(silver+'.color',0.0, 0.0, 0.0,type='double3')
+    mc.setAttr(silver+'.transparency', 0.0, 0.0, 0.0, type='double3')
+    mc.setAttr(silver+'.ambientColor', 0.0, 0.0, 0.0, type='double3')
+    mc.setAttr(silver+'.incandescence', 0.122, 0.122, 0.122, type='double3')
     #mc.setAttr(chrome+'.cosinePower', 20)
-    mc.setAttr(chrome+'.specularColor', 1.0,1.0,1.0,type='double3')
-    mc.setAttr(chrome+'.reflectivity', 2.0)
+    mc.setAttr(silver+'.specularColor', 1.0,1.0,1.0,type='double3')
+    mc.setAttr(silver+'.reflectivity', 2.0)
+
+def sword():
+    ### silver
+    global swordSG
+    sword = mc.shadingNode('blinn',asShader=True, n='sword')
+    swordSG = mc.sets(r=True, nss=True, em=True, n='swordSG')
+    mc.connectAttr(sword+'.outColor',swordSG+'.surfaceShader')
+    mc.setAttr(sword+'.color',1.0, 0.4, 0.7,type='double3')
+    mc.setAttr(sword+'.transparency', 0.0, 0.0, 0.0, type='double3')
+    mc.setAttr(sword+'.ambientColor', 0.0, 0.0, 0.0, type='double3')
+    mc.setAttr(sword+'.incandescence', 0.0, 0.0, 0.0, type='double3')
+    #mc.setAttr(chrome+'.cosinePower', 20)
+    mc.setAttr(sword+'.specularColor', 0.5,0.5,0.5,type='double3')
+    mc.setAttr(sword+'.reflectivity', 0.5)
+    mc.setAttr(sword+'.eccentricity', 0.3)
+    mc.setAttr(sword+'.glowIntensity', 1.0)
 
 
 '''
