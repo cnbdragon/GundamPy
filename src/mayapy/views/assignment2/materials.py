@@ -161,7 +161,7 @@ def npchrome():
     ### blue clear plastic
     global npchromeSG
     npchrome = mc.shadingNode('phong',asShader=True, n='npchrome')
-    npchromeSG = mc.sets(r=True, nss=True, em=True, n='chromeSG')
+    npchromeSG = mc.sets(r=True, nss=True, em=True, n='npchromeSG')
     mc.connectAttr(npchrome+'.outColor',npchromeSG+'.surfaceShader')
     mc.setAttr(npchrome+'.color',0.0,0.0,0.0,type='double3')
     mc.setAttr(npchrome+'.transparency', 0.0, 0.0, 0.0, type='double3')
