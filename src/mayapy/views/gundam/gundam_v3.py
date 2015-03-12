@@ -17,6 +17,7 @@ class Gundam:
     def __init__(self, name):
         self.name = name
         self.currentFeet = "parallel"
+        self.currentArms = "straight"
         '''
         mc.select(cl=True)
         self.rightHand = hand.Hand(name+'_right', Side.right)
