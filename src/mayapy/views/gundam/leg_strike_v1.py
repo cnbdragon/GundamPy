@@ -106,9 +106,12 @@ class Leg():
 
         self.tibia = mc.polyUnite(self.tibia, claf1)
 
-        #mc.scale(0,5,2)
-        #mc.move(0,0,5)
+        t1 = mc.polyCube(sx=3,sy=3,sz=3,w=10, h=10, d=10, n='thigh')[0]
+        t1r = mc.polyBevel(ws=1, oaf=1, o=.5,sa=30 )[0]
+        mc.scale(1,5,1)
+        mc.move(0,75,-12,r=True)
 
+        self.femur = mc.polyUnite(self.femur, t1)
 
 
 
