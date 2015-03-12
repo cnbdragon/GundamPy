@@ -10,7 +10,7 @@ from nimble import cmds as mc
 from gundam_enums import Side
 #import hand_v2 as hand
 import leg_strike_v1 as leg
-import arms_v3 as arms
+import arms_strike_v1 as arms
 import torso_strike_v1 as torso
 import head_strike_v1 as head
 import sword_v1 as sword
@@ -44,9 +44,9 @@ class Gundam:
         self.rightLeg = leg.Leg(name+'_right', Side.right,self.color1,self.color2,self.color3)
         mc.select(cl=True)
 
-        self.leftArm = arms.Arm(name+'_left', Side.left)
+        self.leftArm = arms.Arm(name+'_left', Side.left,self.color1,self.color2,self.color3)
         mc.select(cl=True)
-        self.rightArm = arms.Arm(name+'_right', Side.right)
+        self.rightArm = arms.Arm(name+'_right', Side.right,self.color1,self.color2,self.color3)
         mc.select(cl=True)
 
         mc.select(self.rightArm.hand.j_wrist)

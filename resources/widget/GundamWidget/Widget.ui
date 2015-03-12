@@ -123,7 +123,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Build Custom</string>
+       <string>Build</string>
       </property>
      </widget>
     </item>
@@ -410,13 +410,13 @@
 
 select a model from the drop down
 
-name the model (each model in the scene needs a unique name)
+name the model (each model needs a unique name)
 
 select the size of the model
 
-select the primary, secondary and tertiary colors of the model. (Not working yet) Defaults will be used if none are selected.
+select the primary, secondary and tertiary colors of the model.
 
-press Build custom.
+press Build.
 
 (use of IK Parenting attaches and detaches the handels from the root node, this is for expereminteng with the model and not for animation)</string>
    </property>
