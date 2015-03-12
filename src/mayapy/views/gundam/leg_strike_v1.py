@@ -11,10 +11,21 @@ from gundam_enums import Side
 
 
 class Leg():
-    def __init__(self, name, side):
+    def __init__(self, name, side,c1=None,c2=None,c3=None):
         self.name = name
         self.side = side
-        self.foot = Foot(name, side)
+
+        self.color1 = c1
+        self.color2 = c2
+        self.color3 = c3
+        if self.color1 is None:
+            self.color1 = 'initialShadingGroup'
+        if self.color2 is None:
+            self.color2 = 'initialShadingGroup'
+        if self.color3 is None:
+            self.color3 = 'initialShadingGroup'
+
+        self.foot = Foot(name, side,c1,c2,c3)
 
         self._createGeometry(name, side)
         self._createJoints(name, side)
@@ -44,7 +55,7 @@ class Leg():
         self.femur = mc.polyUnite(self.femur,self.hip, n=name+'_femur')[0]
         mc.move(0,107,-12, self.femur+".scalePivot", self.femur+".rotatePivot")
 
-        self._createCalfArmor(name, side)
+        #self._createCalfArmor(name, side)
 
         pass
 
@@ -115,11 +126,23 @@ class Leg():
         mc.delete(ch=True)
 
 class Foot():
-    def __init__(self, name, side):
+    def __init__(self, name, side,c1=None,c2=None,c3=None):
         self.name = name
         self.side = side
+        self.color1 = c1
+        self.color2 = c2
+        self.color3 = c3
+        if self.color1 is None:
+            self.color1 = 'initialShadingGroup'
+        if self.color2 is None:
+            self.color2 = 'initialShadingGroup'
+        if self.color3 is None:
+            self.color3 = 'initialShadingGroup'
+
+
         self._createGeometry(name, side)
         self._createJoints(name,side)
+        self._createArmor(name, side)
 
         self._deleteHistory()
         pass
@@ -134,7 +157,39 @@ class Foot():
         mc.move(0,0,-2,r=True)
         mc.rotate(0,0,'90deg')
         self.toe = mc.polyUnite(self.toe,self.ball, n=name+'_toe')[0]
+
+        self.toeBox = mc.polyCube(w=8, h= 4, d=3, n=name+'_toeBox')[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(0,.9,0, r=True)
+        #e1
+        mc.select(self.toeBox+'.e[1]')
+        mc.move(0,-1,0,r=True)
+
+        self.toeBoxBase = mc.polyCube(w=8, h= 4, d=3, n=name+'_toeBoxBase')[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,.9,1, r=True)
+        #e1
+        mc.select(self.toeBoxBase+'.e[2]')
+        mc.move(0,-2,0,r=True)
+        mc.select(self.toeBoxBase+'.e[1]')
+        mc.move(0,-1,0,r=True)
+        mc.select(self.toeBoxBase+'.f[2]')
+        mc.scale(1.25,1,1)
+        mc.move(0,0,-1,r=True)
+
+        self.toeToeBox = mc.polyCube(w=8, h=3, d=3, n= name+'_toeToeBox')[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,.4,4,r=True)
+        #f0
+        mc.select(self.toeToeBox+'.f[0]')
+        mc.scale(.75,.75,1)
+
         mc.move(0,0,-2, self.toe+".scalePivot", self.toe+".rotatePivot")
+
+        self.toe = mc.polyUnite(self.toe,self.toeBox)
+        self.toe = mc.polyUnite(self.toe, self.toeToeBox)
+        self.toe = mc.polyUnite(self.toe, self.toeBoxBase, n=name+'_toe')
+
 
         #build arch
         self.arch = mc.polyCube(w=5, d=10, n=name+'_arch')[0]
@@ -149,7 +204,115 @@ class Foot():
 
         self.arch = mc.polyUnite(self.arch, self.ankle, n=name+'_arch')[0]
 
+        self.archArmor = mc.polyCube(w=8, h= 4, d=8)[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(0,.9,-6,r=True)
 
+        self.archArmor2 = mc.polyCube(w=8, h= 4, d=8)[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(0,4.9,-6,r=True)
+        mc.select(self.archArmor2+'.e[1]')
+        mc.move(0,-3.75,0,r=True)
+        mc.select(self.archArmor2+'.e[2]')
+        #mc.move(0,-.5,0,r=True)
+        mc.scale(.5,1,1)
+
+        self.archArmor3 = mc.polyCube(w=8, h= 4, d=8)[0]
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(0,4.9,-8.5,r=True)
+        mc.select(self.archArmor3+'.e[1]')
+        mc.move(0,0,-4 ,r=True)
+        mc.scale(.5,1,1)
+        mc.select(self.archArmor3+'.e[2]')
+        #mc.move(0,-.5,0,r=True)
+        mc.scale(.5,1,1)
+
+        self.archArmorBase = mc.polyCube(w=8, h= 4, d=8)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,.9,-6,r=True)
+
+        mc.select(self.archArmorBase+'.f[0]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase+'.f[2]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase+'.e[1]')
+        mc.move(0,-2,0,r=True)
+        mc.select(self.archArmorBase+'.e[2]')
+        mc.move(0,-.5,0,r=True)
+
+        self.archArmorBase2 = mc.polyCube(w=8, h= 4, d=4)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,.9,-12,r=True)
+        mc.select(self.archArmorBase2+'.f[0]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase2+'.f[2]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase2+'.e[3]')
+        mc.move(0,1,1.75,r=True)
+        mc.select(self.archArmorBase2+'.e[1]')
+        mc.move(0,-.5,0,r=True)
+
+        self.archArmorBase3 = mc.polyCube(w=8, h= 4, d=4)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,4.9,-12,r=True)
+        mc.select(self.archArmorBase3+'.f[0]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase3+'.f[2]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase3+'.f[1]')
+        mc.scale(.5,1,1)
+        mc.move(0,-1,0, r=True)
+        mc.select(self.archArmorBase3+'.e[0]')
+        mc.move(0,-.5,0,r=True)
+        mc.select(self.archArmorBase3+'.e[1]')
+        mc.move(0,0,-2.5,r=True)
+        mc.select(self.archArmorBase3+'.e[2]')
+        mc.move(0,0,-1.5,r=True)
+
+        self.archArmorBase4 = mc.polyCube(w=8, h= 4, d=4)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,4.9,-15.5,r=True)
+        mc.select(self.archArmorBase4+'.f[0]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase4+'.f[2]')
+        mc.scale(1.25,1,1)
+        mc.select(self.archArmorBase4+'.f[1]')
+
+        mc.scale(.5,1,1)
+        mc.move(0,-2,0, r=True)
+        mc.select(self.archArmorBase4+'.f[3]')
+        mc.scale(1,1,1.25)
+        mc.select(self.archArmorBase4+'.e[0]')
+        mc.move(0,-3,.5,r=True)
+        mc.select(self.archArmorBase4+'.e[1]')
+        mc.move(0,0,-2,r=True)
+        mc.select(self.archArmorBase4+'.e[2]')
+        mc.move(0,0,1,r=True)
+        mc.select(self.archArmorBase4+'.e[3]')
+        mc.move(0,-2,-.75,r=True)
+        mc.scale(.75,1,1)
+
+        self.archArmorBase5 = mc.polyCube(w=8, h= 4, d=5)[0]
+        mc.sets(e=True, forceElement = self.color2)
+        mc.move(0,.9,-15.6,r=True)
+        mc.select(self.archArmorBase5+'.f[1]')
+        mc.move(0,-3,0, r=True)
+        mc.scale(1.25,1,1.25)
+        mc.select(self.archArmorBase5+'.f[2]')
+        mc.scale(.75,1,1)
+        #mc.select(self.archArmorBase5+'.e[3]')
+        #mc.move(0,1,0,r=True)
+        mc.select(self.archArmorBase5+'.e[2]')
+        mc.move(0,1,0,r=True)
+
+        self.arch = mc.polyUnite(self.arch,self.archArmor)
+        self.arch = mc.polyUnite(self.arch,self.archArmor2)
+        self.arch = mc.polyUnite(self.arch,self.archArmor3)
+        self.arch = mc.polyUnite(self.arch,self.archArmorBase2)
+        self.arch = mc.polyUnite(self.arch,self.archArmorBase3)
+        self.arch = mc.polyUnite(self.arch,self.archArmorBase4)
+        self.arch = mc.polyUnite(self.arch,self.archArmorBase5)
+        self.arch = mc.polyUnite(self.arch,self.archArmorBase, n=name+'_arch')[0]
 
         mc.move(0,3,-12, self.arch+".scalePivot", self.arch+".rotatePivot")
         #self.heal = mc.polyCube(sx=2, sy=2, sz=2,w=5, h=3, n=name+'_heal')
@@ -171,6 +334,9 @@ class Foot():
         mc.parent(self.toe,self.j_toe)
         pass
 
+    def _createArmor(self,name, side):
+        pass
+
     def _createIK(self, name, side):
         pass
 
@@ -178,5 +344,5 @@ class Foot():
         mc.select(self.j_ankle)
         mc.delete(ch=True)
 
-#Leg('right', Side.right)
+Leg('right', Side.right)
 mc.select(cl=True)

@@ -11,6 +11,7 @@ from pyglass.widgets.PyGlassWidget import PyGlassWidget
 import materials
 global listOfMaterials
 global listOfMaterialShader
+materials.whiteAnodizedAluminum()
 materials.redAnodizedAluminum()
 materials.blueAnodizedAluminum()
 materials.redFineMettalic()
@@ -25,6 +26,7 @@ materials.shinyGold()
 materials.silver()
 
 listOfMaterialShader=['none',
+                      materials.whiteAASG,
                       materials.redAASG,
                       materials.blueAASG,
                       materials.redFMSG,

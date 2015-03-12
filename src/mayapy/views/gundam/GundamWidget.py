@@ -98,7 +98,19 @@ class GundamWidget(PyGlassWidget):
         elif idx == 1:
             gundam = Gundam3(self.maleName.text())
         elif idx == 2:
-            gundam = GundamStrike(self.maleName.text())
+            c1 = None
+            c2 = None
+            c3 = None
+            idx = self.materialList1.currentIndex()
+            if idx != 0:
+                c1 = listOfMaterialShader[idx]
+            idx = self.materialList2.currentIndex()
+            if idx != 0:
+                c2 = listOfMaterialShader[idx]
+            idx = self.materialList3.currentIndex()
+            if idx != 0:
+                c3 = listOfMaterialShader[idx]
+            gundam = GundamStrike(self.maleName.text(),c1,c2,c3)
         elif idx == 3:
             gundam = GundamArtemie(self.maleName.text())
 

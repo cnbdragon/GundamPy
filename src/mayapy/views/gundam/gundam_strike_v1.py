@@ -15,8 +15,18 @@ import torso_strike_v1 as torso
 import head_strike_v1 as head
 
 class Gundam:
-    def __init__(self, name):
+    def __init__(self, name, c1=None, c2=None, c3=None):
         self.name = name
+        self.color1 = c1
+        self.color2 = c2
+        self.color3 = c3
+        if self.color1 is None:
+            self.color1 = 'initialShadingGroup'
+        if self.color2 is None:
+            self.color2 = 'initialShadingGroup'
+        if self.color3 is None:
+            self.color3 = 'initialShadingGroup'
+
 
         '''
         mc.select(cl=True)
@@ -24,9 +34,9 @@ class Gundam:
         mc.select(cl=True)
         self.leftHand = hand.Hand(name+'_left', Side.left)
         '''
-        self.leftLeg = leg.Leg(name+'_left', Side.left)
+        self.leftLeg = leg.Leg(name+'_left', Side.left,self.color1,self.color2,self.color3)
         mc.select(cl=True)
-        self.rightLeg = leg.Leg(name+'_right', Side.right)
+        self.rightLeg = leg.Leg(name+'_right', Side.right,self.color1,self.color2,self.color3)
         mc.select(cl=True)
 
         self.leftArm = arms.Arm(name+'_left', Side.left)

@@ -5,6 +5,7 @@ from nimble import cmds as mc
 from nimble import cmds as cmds
 from nimble import cmds as cmd
 
+whiteAASG = None
 redAASG = None
 blueAASG = None
 redFMSG = None
@@ -17,6 +18,17 @@ npchromeSG = None
 goldSG = None
 shinyGoldSG = None
 silverSG = None
+
+def whiteAnodizedAluminum():
+    ### white anodized aluminum
+    global whiteAASG
+    whiteAA = mc.shadingNode('phong',asShader=True, n='whiteAA')
+    whiteAASG = mc.sets(r=True, nss=True, em=True, n='whiteAASG')
+    mc.connectAttr(whiteAA+'.outColor',whiteAASG+'.surfaceShader')
+    mc.setAttr(whiteAA+'.color',0.9,0.9,0.9,type='double3')
+    mc.setAttr(whiteAA+'.cosinePower', 2)
+    mc.setAttr(whiteAA+'.specularColor', 0.9,0.9,0.9,type='double3')
+    mc.setAttr(whiteAA+'.reflectivity', 0.2)
 
 def redAnodizedAluminum():
     ### red anodized aluminum
