@@ -32,25 +32,30 @@ class ArmsIK():
             self.gundamIns.currentArms = "fifth"
             #left arm:
             mc.select(self.gundamIns.leftArm.h_hand)
-            mc.move(-10.285,0,r=True)
+            mc.move(-10.285,0,0,r=True)
             mc.move(0,0,83.464,r=True)
             mc.move(-70,0,0,r=True)
             mc.move(0,0,-10, r=True)
-            mc.move(0,-30,0, r=True)
+            mc.move(0,-32,0, r=True)
             mc.move(0,0,-10,r=True)
             mc.rotate(0,-60,0,r=True)
             mc.select(cl=True)
-
+            mc.select(self.gundamIns.leftArm.hand.j_wrist)
+            mc.rotate(0,38.976,0,r=True)
+            mc.select(cl=True)
             mc.select(self.gundamIns.rightArm.h_hand)
-            '''
-            mc.move(10.285,0,r=True)
+
+            mc.move(10.285,0,0,r=True)
             mc.move(0,0,83.464,r=True)
-            mc.move(-70,0,0,r=True)
-            mc.move(0,0,-10, r=True)
-            mc.move(0,-30,0, r=True)
-            mc.move(0,0,-10,r=True)
-            mc.rotate(0,60,0,r=True)
-            '''
+            mc.move(75,0,0,r=True)
+            mc.move(0,0,-13, r=True)
+            mc.move(0,-33,0, r=True)
+            mc.move(0,0,-13,r=True)
+            mc.rotate(0,40,0,r=True)
+            mc.select(cl=True)
+            mc.select(self.gundamIns.rightArm.hand.j_wrist)
+            mc.rotate(0,-38.976,0,r=True)
+
 
 
         else:
