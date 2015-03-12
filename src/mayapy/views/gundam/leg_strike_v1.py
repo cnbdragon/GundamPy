@@ -45,6 +45,18 @@ class Leg():
         mc.move(0,54,-12,r=True)
         mc.rotate(0,0,'90deg')
         self.tibia = mc.polyUnite(self.tibia,self.knee, n=name+'_tibia')[0]
+
+        self.llegArmor = mc.polyCube(w=8,h=30,d=8)[0]
+        mc.move(0,22,-12)
+
+        mc.select(self.llegArmor+'.f[3]')
+        mc.scale(1.5,1,1.5)
+        mc.select(self.llegArmor+'.e[0]')
+        mc.polySubdivideEdge(dv=2)
+        mc.select(self.llegArmor+'.e[12]')
+        mc.move(0,2,0, r=True)
+        self.tibia = mc.polyUnite(self.tibia,self.llegArmor, n=name+'_tibia')[0]
+
         mc.move(0,54,-12, self.tibia+".scalePivot", self.tibia+".rotatePivot")
 
         #create feamer
@@ -55,30 +67,45 @@ class Leg():
         self.femur = mc.polyUnite(self.femur,self.hip, n=name+'_femur')[0]
         mc.move(0,107,-12, self.femur+".scalePivot", self.femur+".rotatePivot")
 
-        #self._createCalfArmor(name, side)
+        self._createCalfArmor(name, side)
 
         pass
 
 
     def _createCalfArmor(self, name, side):
         p1 = mc.polySphere(r=10)[0]
-        mc.scale(.35,1,.75)
+        mc.scale(.35,1.5,.75)
         mc.move(5,0,0)
 
         p2 = mc.polySphere(r=10)[0]
-        mc.scale(.35,1,.75)
+        mc.scale(.35,1.5,.75)
         mc.move(-5,0,0)
 
         p3 = mc.polyCylinder(r=10, sx=40)[0]
         mc.rotate(0,0,'90deg')
-        mc.scale(1,5,.75)
+        mc.scale(1.5,5,.75)
 
         #claf1 = mc.polyUnite(p1,p2,p3)
         #print calf1
-        calf1 = mc.polyBoolOp(p1, p3, op=1, n='calf')[0]
+        #calf1 = mc.polyBoolOp(p1, p3, op=1, n='calf')[0]
         #calf2 = mc.polyBoolOp(calf1, p2, op=1, n='calf')[0]
 
-        p4 = mc.polyCube(w=10, h=10, d=10)
+        p4 = mc.polyCube(w=10, h=10, d=10)[0]
+        mc.move(0,10,-5)
+        p5 = mc.polyCube(w=10, h=10, d=10)[0]
+        mc.move(0,10,-5)
+        p6 = mc.polyCube(w=10, h=10, d=10)[0]
+        mc.move(0,10,-5)
+
+        c1 = mc.polyBoolOp(p1,p4, op=2)[0]
+        c2 = mc.polyBoolOp(p2,p5, op=2)[0]
+        c3 = mc.polyBoolOp(p3,p6, op=2)[0]
+        claf1 = mc.polyUnite(c1,c2,c3)
+        mc.sets(e=True, forceElement = self.color1)
+        mc.move(0,40,-10)
+
+        self.tibia = mc.polyUnite(self.tibia, claf1)
+
         #mc.scale(0,5,2)
         #mc.move(0,0,5)
 
@@ -344,5 +371,5 @@ class Foot():
         mc.select(self.j_ankle)
         mc.delete(ch=True)
 
-Leg('right', Side.right)
+#Leg('right', Side.right)
 mc.select(cl=True)
