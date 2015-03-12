@@ -7,6 +7,7 @@ from mayapy.views.gundam.gundam_skeleton_v1 import Skeleton
 from physicPlie2 import typeOfPlie,Plies
 from PhysicPlieIk import PlieIk,moveFeetFirst,moveFeetFifth
 from mayapy.views.gundam.GundamWidget import GundamWidget,gundams_need
+from PhysicArmIK import ArmsIk
 from enum import Enum
 print gundams_need
 
@@ -20,19 +21,31 @@ class PhysicWidget(PyGlassWidget):
         """Creates a new instance of Assignment2Widget."""
         super(PhysicWidget, self).__init__(parent, **kwargs)
 
-        self.leftFootBtn.clicked.connect(self._handleLeftFootButton)
+
         self.homeBtn.clicked.connect(self._handleReturnHome)
         self.plieBtn.clicked.connect(self._handlePlie)
+        self.armBtn.clicked.connect(self._handleArms)
+        self.plieBox.addItem("first Plie")
+        self.plieBox.addItem("second Plie")
+        self.plieBox.addItem("parallel Plie")
+        self.plieBox.addItem("fifth Plie")
+        self.plies = ["first","second","parallel","fifth"]
+        self.arms = ["first","second","fifth"]
 
-
+    def _handleArms(self):
+        global gundams_need
+        ind = self.armBox.currentIndex()
+        arms1 = ArmsIk(self.arms[ind],gundams_need[0][0])
 #===================================================================================================
 #                                                                                 H A N D L E R S
     def _handlePlie(self):
         global gundams_need
-        times = self.timeBox.value()
+        startTime = self.startTimeBox.value()
+        endTime = self.endTimeBox.value()
+        idx = self.plieBox.currentIndex()
         print gundams_need
 
-        plie1 = PlieIk("first",0,times,gundams_need[0][0])
+        plie1 = PlieIk(self.plies[idx],startTime,endTime,gundams_need[0][0])
 
 #===================================================================================================
 #                                                                                 H A N D L E R S
@@ -41,7 +54,5 @@ class PhysicWidget(PyGlassWidget):
     def _handleReturnHome(self):
         self.mainWindow.setActiveWidget('home')
 
-#___________________________________________________________________________________________________ _handleLeftFootBtn
-    def _handleLeftFootButton(self):
-        seleton_1 = Skeleton("bob")
+
 

@@ -3,24 +3,32 @@ import mayapy.views.gundam.leg_v3
 import mayapy.views.gundam.arms_v3
 import mayapy.views.gundam.torso_v3
 import nimble
-
 from nimble import cmds as mc
+
 def moveFeetFirst(gundamIns):
-    mc.select(gundamIns.rightLeg.h_foot)
-    print("here", gundamIns)
-    mc.rotate(0,-70,0)
-    mc.move(19.8,0,0,r=True)
-    mc.select(gundamIns.leftLeg.h_foot)
-    mc.rotate(0,70,0)
-    mc.move(-19.8,0,0,r=True)
-    mc.select(cl=True)
-    gundamIns.detachLegsIKFromRoot()
-    mc.select(cl=True)
-    mc.select(gundamIns.j_root)
+    if gundamIns.currentFeet == 'parallel':
+        mc.select(gundamIns.rightLeg.h_foot)
+        print("here", gundamIns)
+        mc.rotate(0,-70,0)
+        mc.move(19.8,0,0,r=True)
+        mc.select(gundamIns.leftLeg.h_foot)
+        mc.rotate(0,70,0)
+        mc.move(-19.8,0,0,r=True)
+        mc.select(cl=True)
+        mc.select(gundamIns.torso.h_hips,gundamIns.torso.h_shoulders,gundamIns.rightArm.h_hand,gundamIns.leftArm.h_hand)
+    if (gundamIns.currentFeet == "second"):
+        mc.select(gundamIns.rightLeg.h_foot)
+        print("here", gundamIns)
+        mc.move(19.8,0,0,r=True)
+        mc.select(gundamIns.leftLeg.h_foot)
+        mc.move(-19.8,0,0,r=True)
+        mc.select(cl=True)
+        mc.select(gundamIns.torso.h_hips,gundamIns.torso.h_shoulders,gundamIns.rightArm.h_hand,gundamIns.leftArm.h_hand)
 
     currentY= mc.getAttr(".translateY")
     mc.move(0,-2.3,0,r=True)
     mc.select(cl=True)
+
 def moveFeetFifth(gundamIns):
     mc.select(gundamIns.rightLeg.h_foot)
     print("here", gundamIns)
@@ -29,8 +37,7 @@ def moveFeetFifth(gundamIns):
     mc.select(gundamIns.leftLeg.h_foot)
     mc.rotate(0,70,0)
     mc.move(2.8,0,0,r=True)
-    gundamIns.detachLegsIKFromRoot()
-    mc.select(gundamIns.j_root)
+    mc.select(gundamIns.torso.h_hips)
     currentY= mc.getAttr(".translateY")
     mc.move(0,-2.3,0,r=True)
 
@@ -59,23 +66,23 @@ class PlieIk():
             moveFeetFirst(self.gundamIns)
             self.gundamIns.currentFeet = "first"
         #mc.currentTime(start)
-        mc.setKeyframe(self.gundamIns.j_root,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,t=start)
-        mc.select(self.gundamIns.j_root)
+        print( start,(end-start))
+        mc.setKeyframe(self.gundamIns.torso.h_hips,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand,t = self.start)
+        mc.select(self.gundamIns.torso.h_hips,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand)
         currentY = mc.getAttr(".translateY")
         mc.move(0,-33,0,r=True)
         mc.select(cl=True)
-        #mc.currentTime((end-start)/2)
-        mc.setKeyframe(self.gundamIns.j_root,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,t=(end-start)/2)
-        mc.select(self.gundamIns.j_root)
+        #mc.currentTime((end-start)*2/2)
+        mc.setKeyframe(self.gundamIns.torso.h_hips,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand,t = (self.end-self.start)/2)
+        mc.select(self.gundamIns.torso.h_hips,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand)
         currentY = mc.getAttr(".translateY")
 
         mc.move(0,33,0,r=True)
         mc.select(cl=True)
         #mc.currentTime(end)
-        mc.setKeyframe(self.gundamIns.j_root,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,t= (end))
+        mc.setKeyframe(self.gundamIns.torso.h_hips,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand, t = self.end)
         mc.select(cl=True)
-        #self.gundamIns.attachLegsIKToRoot()
-        mc.select(cl=True)
+
 
     def plieSecond(self,start,end):
         pass

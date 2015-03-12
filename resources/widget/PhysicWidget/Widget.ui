@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>402</width>
-    <height>301</height>
+    <width>801</width>
+    <height>364</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,53 +16,175 @@
   <widget class="QPushButton" name="homeBtn">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>260</y>
-     <width>75</width>
-     <height>23</height>
+     <x>20</x>
+     <y>300</y>
+     <width>101</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Return Home</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="leftFootBtn">
+  <widget class="QSpinBox" name="startTimeBox">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>75</width>
-     <height>23</height>
+     <x>30</x>
+     <y>90</y>
+     <width>57</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>200</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="endTimeBox">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>90</y>
+     <width>57</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>200</number>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="plieBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>160</y>
+     <width>111</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="startLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>71</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Left Foot</string>
+    <string>Start Time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="endLabel">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>50</y>
+     <width>62</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>End Time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mainLabel">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>10</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Plie</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="plieLabel">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>130</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Which Plie</string>
    </property>
   </widget>
   <widget class="QPushButton" name="plieBtn">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>200</y>
+     <x>40</x>
+     <y>210</y>
      <width>114</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
-    <string>plies</string>
+    <string>Click to Plie </string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="timeBox">
+  <widget class="QLabel" name="armLabel">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>170</y>
-     <width>57</width>
-     <height>25</height>
+     <x>320</x>
+     <y>10</y>
+     <width>62</width>
+     <height>16</height>
     </rect>
    </property>
-   <property name="minimum">
-    <number>1</number>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Arms&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="armBox">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>50</y>
+     <width>111</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="armBtn">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>90</y>
+     <width>114</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>click to arms</string>
    </property>
   </widget>
  </widget>
