@@ -73,7 +73,7 @@ class Gundam:
         mc.move(35,90,0, r=True)
         mc.rotate(0,0,90)
 
-        self.torso = torso.Torso('torso',self.color1,self.color2,self.color3)
+        self.torso = torso.Torso(name+'_torso',self.color1,self.color2,self.color3)
         mc.select(self.torso.j_root)
         mc.select(self.torso.j_bind_root, add=True)
         mc.move(0,107,0)
