@@ -52,17 +52,32 @@ class  BigJump():
         return leg1
 
     def jump(self):
-        PlieIk("first",self.start,self.end/3.0,self.gundamIns)
-
+        PlieIk("first",self.start,self.end/5.0,self.gundamIns)
+        mc.select(self.gundamIns.torso.h_hips)
+        mc.move(0,20,0,r=True)
+        mc.select(cl=True)
         mc.select(self.gundamIns.rightLeg.h_foot)
-        mc.rotate(-120,0,0, r=True)
-        mc.select(cl=True)
+        mc.move(0,0,-80,r=True)
         mc.select(self.gundamIns.leftLeg.h_foot)
-        mc.rotate(90,0,0)
+        mc.move(0,-50,0,r=True)
         mc.select(cl=True)
-        mc.select(self.gundamIns.torso.h_hips,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand)
+        mc.move(0,50,0,r=True)
+        mc.move(10,0,0,r=True)
+        mc.move(0,50,0,r=True)
+        mc.rotate(70,-160,70)
+        #mc.rotate(0,70,0,r=True)
+        #mc.rotate(0,0,-60,r=True)
+        mc.select(cl=True)
+        mc.setKeyframe(self.gundamIns.torso.h_hips,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand,t = self.end/2+2)
+        mc.select(self.gundamIns.rightLeg.h_foot)
+        mc.rotate(0,-70,0)
+        mc.move(-8,-50,12)
+        mc.select(cl=True)
+        mc.select(self.gundamIns.torso.h_hips,self.gundamIns.leftArm.h_hand,self.gundamIns.rightArm.h_hand)
+        mc.move(0,-97,0, r= True)
+        mc.setKeyframe(self.gundamIns.torso.h_hips,self.gundamIns.leftLeg.h_foot,self.gundamIns.rightLeg.h_foot,self.gundamIns.torso.h_shoulders,self.gundamIns.rightArm.h_hand,self.gundamIns.leftArm.h_hand,t = self.end)
 
-        mc.setKeyframe(self.gundamIns.torso.j_root,t=((self.start-self.end)/3.0)/2 )
+
 
 
 

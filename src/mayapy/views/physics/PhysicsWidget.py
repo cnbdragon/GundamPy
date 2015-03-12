@@ -30,7 +30,7 @@ class PhysicWidget(PyGlassWidget):
         self.plieBox.addItem("second Plie")
         self.plieBox.addItem("parallel Plie")
         self.plieBox.addItem("fifth Plie")
-        self.plies = ["half","second","parallel","fifth"]
+        self.plies = ["first","second","parallel","fifth"]
         self.arms = ["first","second","fifth"]
         self.jumpBtn.clicked.connect(self._handleJump)
 
@@ -39,11 +39,12 @@ class PhysicWidget(PyGlassWidget):
         start = self.startTimeBox_2.value()
         end = self.endTimeBox_2.value()
         jus = BigJump("jump",start,end,gundams_need[0][0],10,3,2)
-
+        jus2 = BigJump("jump",start,end,gundams_need[1][0],10,3,2)
     def _handleArms(self):
         global gundams_need
         ind = self.armBox.currentIndex()
         arms1 = ArmsIK(self.arms[ind],gundams_need[0][0])
+        arms1 = ArmsIK(self.arms[ind],gundams_need[1][0])
 #===================================================================================================
 #                                                                                 H A N D L E R S
     def _handlePlie(self):
@@ -54,6 +55,7 @@ class PhysicWidget(PyGlassWidget):
         print gundams_need
 
         plie1 = PlieIk(self.plies[idx],startTime,endTime,gundams_need[0][0])
+        plie2 = PlieIk(self.plies[idx],startTime,endTime,gundams_need[1][0])
 
 #===================================================================================================
 #                                                                                 H A N D L E R S
