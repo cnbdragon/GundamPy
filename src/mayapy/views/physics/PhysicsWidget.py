@@ -9,6 +9,7 @@ from PhysicPlieIk import PlieIk,moveFeetFirst,moveFeetFifth
 from mayapy.views.gundam.GundamWidget import GundamWidget,gundams_need
 from PhysicArmIK import ArmsIK
 from PhysicJump import BigJump
+from PhysicTurn import Turn
 from enum import Enum
 print gundams_need
 
@@ -26,15 +27,23 @@ class PhysicWidget(PyGlassWidget):
         self.homeBtn.clicked.connect(self._handleReturnHome)
         self.plieBtn.clicked.connect(self._handlePlie)
         self.armBtn.clicked.connect(self._handleArms)
+        self.turnBtn.clicked.connect(self._handleTurn)
         self.plieBox.addItem("first Plie")
         self.plieBox.addItem("half Plie in first")
-        self.plieBox.addItem("second Plie")
-        self.plieBox.addItem("parallel Plie")
+        #self.plieBox.addItem("second Plie")
+        #self.plieBox.addItem("parallel Plie")
         self.plieBox.addItem("fifth Plie")
         self.armBox.addItem("fifth")
-        self.plies = ["first","half","second","parallel","fifth"]
+        self.plies = ["first","half","fifth"]
         self.arms = ["first","second","fifth"]
         self.jumpBtn.clicked.connect(self._handleJump)
+
+    def _handleTurn(self):
+        global gundams_need
+        start = self.startTimeBox_3.value()
+        end = self.endTimeBox_3.value()
+        for i in range(len(gundams_need)):
+            jus = Turn("Turn",start,end,gundams_need[i][0])
 
     def _handleJump(self):
         global gundams_need
